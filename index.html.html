@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="4UO2BL6j9FU4zOQMc5Y3cZ">
+<head data-page-node-id="SdBY2wWfmGYBStmq38IQx7">
+<meta charset="UTF-8" data-page-node-id="RB8KyuS4LJhXX9UrzKckCo" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" data-page-node-id="Ar1AAKooSDmcYbCUEmVeU7" />
+<meta name="color-scheme" content="light dark" data-page-node-id="Uebj4AmqTetBgKNz6dSpnm" />
+<meta name="theme-color" content="#FFFFFF" data-page-node-id="cPj5jo2YvXEl9zsD2yovYg" />
+<title>宋一鸣 · 数据分析 / 数据运营</title>
+
+<!-- 主题初始化：必须跑在样式表之前，否则深色模式会有一次白屏闪烁 -->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('resume-theme');
+      var dark = saved ? saved === 'dark'
+                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.classList.add('dark');
+    } catch (e) {}
+  })();
+</script>
+<meta name="description" content="宋一鸣的个人作品集 —— 数据分析 / 数据运营方向，擅长指标体系、异动归因与看板搭建。" data-page-node-id="w3AMLsrLaFGSrhbehDdYKR" />
+
+<!--
+  社交分享卡片（微信 / 飞书 / 钉钉 分享出去才有图文预览）
+  ⚠️ og:image 必须是「可公网访问的绝对 URL」，本地 file:// 打不开，浏览器和爬虫都读不到。
+     所以这里先留成占位域名，等你把页面托管到任意静态空间后，把两处 URL 换成真实地址即可。
+-->
+<meta property="og:type"        content="profile" data-page-node-id="f3kiqXms98B3MEmmip9PCj" />
+<meta property="og:title"       content="宋一鸣 · 数据分析 / 数据运营" data-page-node-id="ev9fswDmsKktT7d56hL7r8" />
+<meta property="og:description" content="数据分析实习生 · Business Intelligence。指标体系搭建、异动归因、看板落地 —— 四个从 0 到 1 的完整项目。" data-page-node-id="Gd5vv4oA4vQ4hSpexwVhE2" />
+<meta property="og:image"       content="https://example.com/og-cover.png" data-page-node-id="deXNsQwaXLvH9JOMBETG1A" />
+<meta property="og:image:width"  content="1200" data-page-node-id="B3RCxuAhY04a9VIoY2YAog" />
+<meta property="og:image:height" content="630" data-page-node-id="OpEVL9uUXiy2GH1umGWkYG" />
+<meta property="og:url"         content="https://example.com/" data-page-node-id="K9bMngDpC1j6Gv03wG2RGw" />
+<meta property="og:locale"      content="zh_CN" data-page-node-id="wpJXQy5TEanCjEElFHkLCo" />
+<meta name="twitter:card"        content="summary_large_image" data-page-node-id="j3BG4btGwiWtIOnWkFUtHU" />
+<meta name="twitter:title"       content="宋一鸣 · 数据分析 / 数据运营" data-page-node-id="rWfgBm9buQbCLU87U85JpU" />
+<meta name="twitter:description" content="数据分析实习生 · Business Intelligence。指标体系搭建、异动归因、看板落地。" data-page-node-id="kPtYAFiF4D6zbDu1vPFZp2" />
+<meta name="twitter:image"       content="https://example.com/og-cover.png" data-page-node-id="ZrEmRCAhVEaYiQBv9yuqQJ" />
+
+<!--
+  字体：不引外链。国内访问 fonts.googleapis.com 常常超时，
+  而 <link rel="stylesheet"> 是渲染阻塞的 —— 一个引不到的字体会让整页空白好几秒。
+  改用系统字体栈：有 Inter 就用，没有则落到各平台自带的高质量无衬线体，零请求、秒开。
+-->
+
+<!--
+  ============================================================
+  配色 / 全局变量：改这里就能整体换肤
+  ============================================================
+-->
+<style>
+  /* ---------- 浅色主题（默认） ---------- */
+  :root {
+    --brand:      #2563EB;  /* 科技蓝 - 主点缀色 / 填充 / 边框 */
+    --brand-deep: #1E3A8A;  /* 深海蓝 - 填充 hover / 标签文字 */
+    --brand-soft: #EFF6FF;  /* 极浅蓝 - 标签底 */
+    --brand-line: #DBEAFE;  /* 浅蓝 - 标签边框 */
+    --glow-rgb:   37,99,235;/* 极光光晕色（RGB，配合 rgba 使用） */
+
+    --ink:        #0F172A;  /* 主文字 */
+    --ink-2:      #475569;  /* 次文字 */
+    --ink-3:      #94A3B8;  /* 弱文字 */
+
+    --line:       #E2E8F0;  /* 细边框 */
+    --bg:         #FFFFFF;  /* 纯白 */
+    --bg-alt:     #F8FAFC;  /* 极浅冷灰 */
+    --surface:    #FFFFFF;  /* 卡片 / 浮层底色 */
+    --scrim:      rgba(255,255,255,.95);
+    --nav-bg:     rgba(255,255,255,.80);
+
+    --radius:     16px;
+    --shadow-sm:  0 1px 2px rgba(15,23,42,.04), 0 1px 3px rgba(15,23,42,.06);
+    --shadow-md:  0 4px 12px rgba(15,23,42,.06), 0 2px 4px rgba(15,23,42,.04);
+    --shadow-lg:  0 18px 40px -12px rgba(37,99,235,.28), 0 8px 16px -8px rgba(15,23,42,.10);
+    /* 极光悬停阴影：内描边 + 中近距离光晕 + 远距离投影 */
+    --shadow-glow: 0 0 0 1px rgba(var(--glow-rgb), .18),
+                   0 0 22px rgba(var(--glow-rgb), .22),
+                   0 18px 40px -12px rgba(var(--glow-rgb), .30);
+  }
+
+  /* ---------- 深色主题：深海蓝打底 + 亮蓝文字 ---------- */
+  html.dark {
+    --brand:      #60A5FA;  /* 亮蓝 - 深底上的文字 / 图标 / 边框 */
+    --brand-deep: #93C5FD;  /* 更亮的蓝 - 标签文字 / 填充 hover */
+    --brand-soft: rgba(96,165,250,.13);
+    --brand-line: rgba(96,165,250,.26);
+    --glow-rgb:   96,165,250;
+
+    --ink:        #E6EDF8;
+    --ink-2:      #A4B3CA;
+    --ink-3:      #6F819A;
+
+    --line:       #1E2B44;
+    --bg:         #0F172A;  /* 深海蓝 - 页面底色 */
+    --bg-alt:     #0A1120;  /* 比底色更深，用来分隔区块 */
+    --surface:    #131E33;  /* 卡片比底色略亮一档 */
+    --scrim:      rgba(19,30,51,.95);
+    --nav-bg:     rgba(15,23,42,.78);
+
+    --shadow-sm:  0 1px 2px rgba(0,0,0,.5);
+    --shadow-md:  0 6px 18px rgba(0,0,0,.45);
+    --shadow-lg:  0 18px 40px -12px rgba(0,0,0,.7), 0 0 26px rgba(var(--glow-rgb), .18);
+    --shadow-glow: 0 0 0 1px rgba(var(--glow-rgb), .30),
+                   0 0 24px rgba(var(--glow-rgb), .38),
+                   0 18px 40px -12px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    /* 拉丁字形优先，中文回落到各平台原生字体；不依赖任何网络字体 */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Text', 'Segoe UI',
+                 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei UI', 'Microsoft YaHei',
+                 system-ui, 'Noto Sans SC', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 分区底色：由变量驱动，深浅色自动切换（卡片用 .bg-white → --surface） */
+  body, #home, #experience, #portfolio, footer { background-color: var(--bg); }
+
+  /* 数字 / 英文用等宽感更强的字距 */
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  /* 滚动进场动画 */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.is-visible { opacity: 1; transform: none; }
+
+  /* ---------- 卡片悬停：极光 / 发光 ---------- */
+  .card-hover {
+    position: relative;
+    isolation: isolate;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease;
+  }
+  /* 跟随光标的极光高光（JS 写入 --mx / --my 实时坐标） */
+  .card-hover::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    border-radius: inherit; pointer-events: none; opacity: 0;
+    transition: opacity .35s ease;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%),
+                rgba(var(--glow-rgb), .16), rgba(var(--glow-rgb), 0) 62%);
+  }
+  /* 悬停效果统一收在 (hover:hover) 里：触屏点一下不会「卡」在发光态 */
+  @media (hover: hover) {
+    .card-hover:hover::after { opacity: 1; }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      border-color: var(--brand);
+      box-shadow: var(--shadow-glow);
+    }
+    .glow-hover:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+      box-shadow: 0 0 15px rgba(var(--glow-rgb), .32);
+    }
+    .glow-fill:hover { box-shadow: 0 0 22px rgba(var(--glow-rgb), .45); }
+    .logo-glow:hover .logo-mark {
+      background-color: var(--brand-deep);
+      box-shadow: 0 0 18px rgba(var(--glow-rgb), .45);
+    }
+    .photo-3d:hover { transform: perspective(1100px) rotateY(0deg) rotateX(0deg) translateY(-6px); }
+  }
+
+  /* ---------- 通用发光悬停（按钮 / 标签 / 图标按钮） ---------- */
+  .glow-hover {
+    transition: color .25s ease, background-color .25s ease, border-color .25s ease,
+                box-shadow .3s ease, transform .3s cubic-bezier(.22,1,.36,1);
+  }
+
+  /* 实色填充按钮的发光悬停（不改文字色，只加光晕） */
+  .glow-fill {
+    transition: background-color .25s ease, box-shadow .3s ease,
+                transform .3s cubic-bezier(.22,1,.36,1);
+  }
+
+  /* Logo 徽标：悬停时整块发光 */
+  .logo-mark { transition: background-color .25s ease, box-shadow .3s ease; }
+
+  /* Hero 照片的 3D 悬浮感 */
+  .photo-3d { transform: perspective(1100px) rotateY(-7deg) rotateX(3deg); transition: transform .6s cubic-bezier(.22,1,.36,1); }
+  /* 深色下给证件照加一圈蓝色「相框」（白底照片在深海里太跳） */
+  html.dark .photo-frame {
+    background-color: #16233C;
+    border-color: rgba(96,165,250,.55);
+    box-shadow: 0 0 0 1px rgba(96,165,250,.20),
+                0 0 34px rgba(96,165,250,.30),
+                0 22px 50px -14px rgba(0,0,0,.66),
+                inset 0 0 0 1px rgba(96,165,250,.28);
+  }
+  html.dark .photo-frame img { outline: 1px solid rgba(96,165,250,.46); outline-offset: -1px; }
+
+  /* 时间线 */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px;
+    background: linear-gradient(to bottom, var(--brand) 0%, var(--brand-line) 60%, transparent 100%);
+  }
+
+  /* 网格背景的淡蓝光晕 */
+  .glow { background: radial-gradient(circle at 50% 50%, rgba(var(--glow-rgb), .22), rgba(var(--glow-rgb), 0) 70%); }
+
+  /* 极光缓慢漂移（Hero 背景氛围） */
+  @keyframes auroraDrift {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1);      opacity: .85; }
+    50%      { transform: translate3d(-3%, 4%, 0) scale(1.12); opacity: 1; }
+  }
+  .aurora-slow { animation: auroraDrift 20s ease-in-out infinite; will-change: transform; }
+
+  ::selection { background: var(--brand); color: var(--bg); }
+
+  /* ---------- 深色模式：Tailwind 白底工具类 → surface 变量 ---------- */
+  html.dark .bg-white     { background-color: var(--surface); }
+  html.dark .bg-white\/80 { background-color: var(--nav-bg); }
+  html.dark .bg-white\/95 { background-color: var(--scrim); }
+  /* 亮蓝填充上用深色文字保证对比度（覆盖同时存在的 text-white） */
+  html.dark .bg-brand     { color: #0B1220; }
+  /* 深色下压低截图亮度，避免大片白色在暗底上过曝 */
+  html.dark .shot-img    { filter: brightness(.88) saturate(.96); }
+
+  /* 主题图标：浅色显示月亮，深色显示太阳 */
+  html:not(.dark) .icon-sun  { display: none; }
+  html.dark       .icon-moon { display: none; }
+
+  /* 切换瞬间给所有元素一个颜色过渡，避免生硬跳变 */
+  html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+    transition: background-color .35s ease, border-color .35s ease,
+                color .35s ease, fill .35s ease, stroke .35s ease !important;
+  }
+
+  /* 尊重系统「减少动态效果」设置 */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .aurora-slow { animation: none !important; }
+    .card-hover:hover { transform: none; }
+  }
+
+  /* ---------- 手机端加固（HR 多半在手机上碎片时间看） ---------- */
+  @media (max-width: 639px) {
+    /* 图标按钮放大到 40px，手指点得准（原 36px 偏小） */
+    #themeBtn, #menuBtn { width: 40px; height: 40px; }
+    /* 筛选标签加高触控区（双类名提高特异性，压过 Tailwind 的 py-2） */
+    .filter-btn.filter-btn { padding-top: .6rem; padding-bottom: .6rem; }
+    /* 移动端没有 hover，「回到顶部」靠点击，加大一点更好按 */
+    #toTop { width: 46px; height: 46px; }
+  }
+
+  /* ---------- iPhone 安全区（配合 viewport-fit=cover；无刘海设备 env() 取 0） ---------- */
+  #navbar                     { padding-top: env(safe-area-inset-top, 0px); }
+  #home                       { padding-top: calc(60px + env(safe-area-inset-top, 0px)); }
+  section[id]                 { scroll-margin-top: calc(76px + env(safe-area-inset-top, 0px)); }
+  #toTop                      { bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); }
+  body                        { padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
+  /* 双类名提高特异性，压过 Tailwind 的 py-8 */
+  .footer-inner.footer-inner  { padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px)); }
+
+  /* ---------- 项目要点：默认只显示前 3 条 ----------
+     布局写在 .hl-item 里而不是用 Tailwind 的 .flex：
+     否则 .hl-item.hl-extra 与 .flex 特异性相同，谁赢取决于注入顺序，很容易失效 */
+  .hl-item { display: flex; gap: .75rem; }
+  .hl-item.hl-extra { display: none; }
+  .hl-open .hl-item.hl-extra { display: flex; }
+  .hl-toggle {
+    margin-top: .35rem;
+    display: inline-flex; align-items: center; gap: .35rem;
+    font-size: 12.5px; font-weight: 600;
+    color: var(--brand);
+    border-radius: 999px;
+    padding: .4rem .8rem;
+    border: 1px solid var(--brand-line);
+    background: var(--brand-soft);
+    cursor: pointer;
+  }
+  .hl-toggle svg { transition: transform .3s cubic-bezier(.22,1,.36,1); }
+  .hl-open .hl-toggle svg { transform: rotate(180deg); }
+
+  /* ---------- 作品灯箱（点击放大 / 手机上也能点） ---------- */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 90;
+    display: none; place-items: center;
+    padding: 1.1rem;
+    background: rgba(9,15,28,.74);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+  }
+  .lightbox.is-open { display: grid; }
+  .lightbox__box {
+    width: min(1060px, 100%);
+    max-height: calc(100vh - 2.2rem);
+    display: flex; flex-direction: column;
+    border-radius: 18px; overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: 0 34px 90px -24px rgba(0,0,0,.62);
+    animation: lbIn .28s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes lbIn { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: none; } }
+  /* 报告 / 看板截图多是长图，若「适配高度」缩进容器里，字会小到看不清。
+     所以按宽度满幅显示，超出高度就在这个容器内上下滚动。 */
+  .lightbox__viewport {
+    flex: 1 1 auto; min-height: 0;
+    overflow: auto; overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background: var(--bg-alt);
+    display: grid; place-items: start center;
+  }
+  .lightbox__img { display: block; max-width: 100%; height: auto; }
+  .lightbox__bar {
+    flex: 0 0 auto;
+    display: flex; align-items: center; gap: .7rem; flex-wrap: wrap;
+    padding: .8rem .95rem;
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .lightbox__title { flex: 1 1 200px; min-width: 0; }
+  .lightbox__title b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .lightbox__title span { display: block; margin-top: .15rem; font-size: 12px; color: var(--ink-3); }
+  .lb-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+    height: 38px; padding: 0 .9rem;
+    border-radius: 10px; font-size: 13px; font-weight: 600;
+    border: 1px solid var(--line); background: transparent; color: var(--ink-2);
+    cursor: pointer; white-space: nowrap;
+  }
+  .lb-btn--brand { border-color: transparent; background: var(--brand); color: #fff; }
+  html.dark .lb-btn--brand { color: #0B1220; }
+  .lb-qr {
+    flex: 0 0 auto; width: 46px; height: 46px;
+    object-fit: contain; padding: 3px;
+    border: 1px solid var(--line); border-radius: 9px; background: #fff;
+  }
+  html.lb-open { overflow: hidden; }
+
+  /* 缩略图上的「放大」提示（桌面悬停出现，移动端常驻但很低调） */
+  .zoom-hint {
+    position: absolute; right: 10px; top: 10px;
+    display: grid; place-items: center;
+    width: 30px; height: 30px; border-radius: 9px;
+    background: rgba(255,255,255,.92); color: var(--brand);
+    border: 1px solid var(--brand-line);
+    box-shadow: 0 2px 10px rgba(15,23,42,.14);
+    opacity: .82; transition: opacity .3s ease, transform .3s ease;
+    pointer-events: none;
+  }
+  html.dark .zoom-hint { background: rgba(19,30,51,.9); }
+  @media (hover: hover) {
+    .portfolio-card .zoom-hint { opacity: 0; }
+    .portfolio-card:hover .zoom-hint { opacity: 1; transform: scale(1.06); }
+  }
+  /* 项目封面裁切位置：默认居中（object-cover 的默认行为）。
+     竖版长图在小屏会被裁成一条窄带，居中会切掉标题栏和 KPI 区，
+     所以这类图在 projects[] 里标 imagePos:'top'，改成顶部对齐。 */
+  .pos-top { object-position: top; }
+
+  .thumb-btn { display: block; width: 100%; cursor: zoom-in; padding: 0; border: 0; background: none; }
+  .thumb-btn:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
+
+  /* 键盘可达性：所有可聚焦元素都要有看得见的描边 */
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 6px;
+  }
+
+  /* ============================================================
+     数据仪表盘区块
+     ============================================================ */
+  /* 图表容器必须有确定高度，否则 ECharts 量出来是 0，画不出来 */
+  .chart-box { width: 100%; height: 252px; }
+  /* 跨两列的归因图：横向条形、条目少，给矮一点更紧凑 */
+  .chart-box--wide { height: 230px; }
+  /* 结论行：把「这张图说明了什么」说清楚，图表才不会沦为装饰 */
+  .chart-insight {
+    display: flex; gap: .5rem; align-items: flex-start;
+    font-size: 12.5px; line-height: 1.65; color: var(--ink-2);
+  }
+  .chart-insight b { color: var(--brand-deep); font-weight: 600; }
+  /* 图表卡右上角的能力标签（转化分析 / 指标监控 / 异动归因） */
+  .chart-kind {
+    /* flex:0 0 auto 很关键 —— 放在 flex 头部的右侧，默认 flex-shrink:1 时
+       空间一紧张它就被压窄，导出 PDF 会看到「转化分」这种半截标签 */
+    flex: 0 0 auto;
+    font-size: 10.5px; font-weight: 600; letter-spacing: .1em;
+    padding: 3px 8px; border-radius: 999px;
+    color: var(--brand-deep); background: var(--brand-soft);
+    border: 1px solid var(--brand-line); white-space: nowrap;
+  }
+  /* 标题块允许收缩、内部文字正常换行，避免把右侧标签挤掉 */
+  .chart-card > header > div:first-child { min-width: 0; }
+
+  @media (max-width: 767px) {
+    .chart-box { height: 224px; }
+    .chart-box--wide { height: 200px; }
+  }
+
+  /* ============================================================
+     打印 / 导出 PDF —— 招聘方大概率会按一次 Ctrl+P
+     ============================================================ */
+  @media print {
+    /* 1) 强制回浅色。深色模式一打印就是一整页墨，这是最要命的 */
+    html, html.dark {
+      --brand: #2563EB; --brand-deep: #1E3A8A;
+      --brand-soft: #EFF6FF; --brand-line: #DBEAFE;
+      --glow-rgb: 37,99,235;
+      --ink: #0F172A; --ink-2: #3F4C63; --ink-3: #6B7A90;
+      --line: #D8DFE8; --bg: #FFFFFF; --bg-alt: #FFFFFF;
+      --surface: #FFFFFF; --scrim: #FFFFFF; --nav-bg: #FFFFFF;
+      --shadow-sm: none; --shadow-md: none; --shadow-lg: none; --shadow-glow: none;
+      color-scheme: light;
+    }
+    html, body { background: #FFFFFF !important; }
+    /* 让品牌色块真的被打印出来（默认浏览器会丢掉背景色） */
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    /* 深色下被反杀的填充按钮文字，打印时回到白色 */
+    html.dark .bg-brand { color: #FFFFFF; }
+    /* 截图不压暗、相框去掉发光只留细边 */
+    html.dark .shot-img { filter: none; }
+    html.dark .photo-frame { background: #FFFFFF; border-color: var(--brand-line); box-shadow: none; }
+    html.dark .photo-frame img { outline: none; }
+
+    /* 2) 隐藏所有交互控件与纯装饰元素 */
+    #navbar, #toTop, #themeBtn, #menuBtn, #mobileMenu, #filters,
+    #lightbox, .zoom-hint, .qr-badge, .aurora-slow, .glow, .hl-toggle { display: none !important; }
+
+    /* 3) 关掉进场动画（否则没滚到的区块打印出来是空白） */
+    .reveal { opacity: 1 !important; transform: none !important; }
+    /* 4) 折叠的要点全部展开 */
+    .hl-extra { display: flex !important; }
+    /* 5) 照片回到平面姿态 */
+    .photo-3d { transform: none !important; }
+    /* 6) 卡片不要被页码切断 */
+    article, .card-hover, .chart-card { break-inside: avoid; page-break-inside: avoid; }
+    h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+    /* 7) 导航高度补白归零（导航被隐藏了，这块留白要还回去） */
+    #home { padding-top: 0 !important; }
+    section[id] { scroll-margin-top: 0; }
+    /* 8) 分区背景改为纯白，避免大色块在纸上断成两半 */
+    section, body, footer { background: #FFFFFF !important; }
+    /* 网页里 80~112px 的区块留白到了纸上会白白浪费近半页，压到 18px */
+    .max-w-6xl { padding-top: 1.1rem !important; padding-bottom: 1.1rem !important; }
+    .card-hover { box-shadow: none !important; }
+
+    /* 9) 版心必须自己收进可印区 —— 这条是 PDF 右端被裁的根治。
+       现象：图表卡右上角的「转化分析 / 指标监控」标签，导出 PDF 只剩
+       「转化分 / 指标监」，连药丸底色都被竖向切断。
+       实测出来的机制（别凭直觉猜）：
+         · Chrome 打印时的「布局视口」由窗口宽度决定，默认 ≈779px；
+           而 @page 的 margin 只裁纸、不改布局视口（10mm/25mm/40mm 实测
+           视口恒为 779px）。
+         · A4 宽 210mm，左右各留 10mm → 可印区只有 190mm ≈ 718px。
+         · 版心 779px 里有 61px 落在可印区外，右端内容被纸张裁掉。
+       所以把版心显式压到可印区宽度 190mm，并把 0 点对齐可印区左边
+       （mx-auto 会把版心整体右移，反而更容易越界）。
+       190mm 内的实际墨迹还被 px-6 的 24px 内边距兜着，离纸边更远。 */
+    /* 用 px 而不是 mm：mm 在打印媒体下的解析实测不可靠。
+       190mm 在 96dpi 下就是 718px。
+       用 max-width 而不是 width —— 窄视口下（比如从小屏打印）width 会
+       把版心硬撑到 718px 反而造成横向溢出。 */
+    body { max-width: 718px !important; }
+    .max-w-6xl {
+      max-width: 718px !important;
+      margin-left: 0 !important;
+      margin-right: auto !important;
+    }
+    /* 双保险：卡片头部允许换行。空间万一紧张，标签宁可掉到第二行，也不越出卡片 */
+    .chart-card > header { flex-wrap: wrap; row-gap: 4px; }
+
+    /* 图表卡在打印时恒定单列满宽 —— 断点跟的是「窗口宽度」而不是纸张，
+       窗口一宽就套用 lg:grid-cols-2，两张卡各只有 1/2 宽，卡片头部
+       的标题与右上角标签立刻互相挤，标签就被挤出卡片、再被纸张裁掉。
+       A4 竖版也只有 190mm，图表单列满宽本来就更好读。
+       注意必须同时把 lg:col-span-2 重置掉：1 列栅格里 span 2 会凭空
+       生成一条隐式列，反而把那张卡挤成半宽。 */
+    #dashboard .grid { grid-template-columns: 1fr !important; }
+    #dashboard .grid > article { grid-column: auto !important; }
+    a { color: inherit; text-decoration: none; }
+
+    /* 显式指定 A4：不写 size 的话浏览器默认按 Letter(612x792pt) 出纸，
+       国内的打印机和 HR 习惯都是 A4(595x842pt) */
+    @page { size: A4 portrait; margin: 12mm 10mm; }
+  }
+
+  /* 滚动条（Chrome / Edge） */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg-alt); }
+  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 99px; border: 2px solid var(--bg-alt); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--brand); }
+  html.dark ::-webkit-scrollbar-thumb { background: #24344F; }
+</style>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          brand: 'var(--brand)',
+          'brand-deep': 'var(--brand-deep)',
+          'brand-soft': 'var(--brand-soft)',
+          'brand-line': 'var(--brand-line)',
+          ink: 'var(--ink)',
+          'ink-2': 'var(--ink-2)',
+          'ink-3': 'var(--ink-3)',
+          line: 'var(--line)',
+          'bg-alt': 'var(--bg-alt)',
+          surface: 'var(--surface)',
+        },
+        fontFamily: { sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'] },
+        borderRadius: { xl2: '16px' },
+      }
+    }
+  }
+</script>
+
+<!--
+  ECharts —— 数据仪表盘区块用
+  这里用的是「按需精简构建」：只打包 折线 / 柱状 / 漏斗 三种图表 + SVG 渲染器，
+  比官方完整版小一半以上。之所以挑 SVG 渲染器：导出 PDF 时是矢量、不发虚。
+  源文件按相对路径引用本地文件，打包单文件版时会被内联进去（见 build_standalone.py）。
+-->
+<script src="echarts-slim.min.js"></script>
+</head>
+
+<body data-page-node-id="mWGr5pgqQhIM44A1ZIEtIL">
+
+<!-- ============================ 顶部导航 ============================ -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 border-b border-line bg-white/80 backdrop-blur-md transition-all duration-300" data-page-node-id="KjHeQF8jL961j6EUr8AC2J">
+  <div class="mx-auto max-w-6xl px-6 h-[60px] flex items-center justify-between" data-page-node-id="JFB89ReRrxqdpXDQyb6NOX">
+
+    <!-- Logo -->
+    <a href="#home" class="logo-glow flex items-center gap-2.5 group" data-page-node-id="tpCFlBZ0mJ3FkBXbvt4uqG">
+      <span class="logo-mark grid place-items-center w-8 h-8 rounded-lg bg-brand text-white text-[12px] font-bold tracking-tight shadow-sm" data-page-node-id="EdE6zDo1HJRCJdTx5sb4PW">SYM</span>
+      <span class="hidden sm:block text-sm font-semibold text-ink-2 group-hover:text-brand transition-colors" data-page-node-id="s7znVbzsigKpXns00IuYDC">宋一鸣</span>
+    </a>
+
+    <!-- 桌面端导航 -->
+    <nav class="hidden md:flex items-center gap-5 lg:gap-7 text-[13px] font-medium text-ink-2" data-page-node-id="twd5BwEmBL33kzB4y9duJu">
+      <a href="#home"      class="nav-link hover:text-brand transition-colors" data-page-node-id="k2UMa10E4D8wrEJLCFDijS">主页</a>
+      <a href="#skills"    class="nav-link hover:text-brand transition-colors" data-page-node-id="aEMirwM2HBszkX3oFrfdDI">专业技能</a>
+      <a href="#experience"class="nav-link hover:text-brand transition-colors" data-page-node-id="M6bbbYGWxNMN3Ms1nwQq3Y">实习经历</a>
+      <a href="#projects"  class="nav-link hover:text-brand transition-colors" data-page-node-id="gHgcU1ntjAMSCTfLeBqPUC">项目经历</a>
+      <a href="#portfolio" class="nav-link hover:text-brand transition-colors" data-page-node-id="GXGdhwEgVqc06lNtUa9Qy2">作品展示</a>
+      <a href="#dashboard" class="nav-link hover:text-brand transition-colors" data-page-node-id="navDsh0001x1y2z3a4b5">仪表盘</a>
+      <a href="#contact"   class="nav-link hover:text-brand transition-colors" data-page-node-id="yxTsJ5LLtjgSNDaDAd8hwb">联系我</a>
+    </nav>
+
+    <!-- 右侧：时间 + 主题切换 + 移动端菜单 -->
+    <div class="flex items-center gap-2.5" data-page-node-id="VKIzn0JGlcqk5DQ6SbMCCG">
+
+      <!-- 当前日期时间 -->
+      <div class="hidden sm:flex items-center gap-2 text-[12px] text-ink-3 tnum" data-page-node-id="0kgsRJHSDTX87UyXQCdd8C">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" data-page-node-id="7BWUVRrI8tLcOrLdDXarSQ"></span>
+        <span id="clock" data-page-node-id="o6F9ZbjbT4HBNS7wheVl6d">--</span>
+      </div>
+
+      <!-- 深色模式切换 -->
+      <button id="themeBtn" type="button"
+              class="glow-hover grid place-items-center w-9 h-9 rounded-lg border border-line text-ink-2"
+              aria-label="切换深色模式" title="切换深色模式" data-page-node-id="FpwKu53xDprTdxrGnxrA03">
+        <svg class="icon-moon w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" data-page-node-id="CKpgGcxsMJlln0f7b38fHS">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.5 13.3A8.5 8.5 0 1 1 10.7 3.5a6.8 6.8 0 0 0 9.8 9.8Z" data-page-node-id="D6jHUCLCDEV5COWcM99ktJ"/>
+        </svg>
+        <svg class="icon-sun w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" data-page-node-id="e4wPhqTlPNMYHFNOlv1kjb">
+          <circle cx="12" cy="12" r="4" data-page-node-id="2YXfMnaQFLTlrX8hmYaZly"/>
+          <path stroke-linecap="round" d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6" data-page-node-id="wgx6hEAHDYNKdpfoNm5peU"/>
+        </svg>
+      </button>
+
+      <!-- 移动端菜单按钮 -->
+      <button id="menuBtn" class="md:hidden glow-hover grid place-items-center w-9 h-9 rounded-lg border border-line text-ink-2" aria-label="菜单" data-page-node-id="3UyhOophyar2oqb0kqqvwQ">
+        <svg id="menuIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" data-page-node-id="HFzBK97VQFjnCAhXJDFRh6"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" data-page-node-id="7L0DYCoGS8X7PxBecAizNQ"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 移动端下拉 -->
+  <div id="mobileMenu" class="md:hidden hidden border-t border-line bg-white" data-page-node-id="L0W4Q36WfjGsqwY7oqWkaV">
+    <nav class="px-6 py-3 flex flex-col text-sm text-ink-2" data-page-node-id="udMiXPjcwHsIFx9lRR8YFi">
+      <a href="#home"       class="mob-link py-2.5 border-b border-line" data-page-node-id="9oMBiNRrHC24G39vcEIKhz">主页</a>
+      <a href="#skills"     class="mob-link py-2.5 border-b border-line" data-page-node-id="daI4KSGjTtNXXZEIwSLoLX">专业技能</a>
+      <a href="#experience" class="mob-link py-2.5 border-b border-line" data-page-node-id="DSzPhrEfwv8AhGevgAnfr4">实习经历</a>
+      <a href="#projects"   class="mob-link py-2.5 border-b border-line" data-page-node-id="1nTjM0bNtmUL4IyLPAXg37">项目经历</a>
+      <a href="#portfolio"  class="mob-link py-2.5 border-b border-line" data-page-node-id="FG7CH9xbMrAef6ScXJ82eA">作品展示</a>
+      <a href="#dashboard"  class="mob-link py-2.5 border-b border-line" data-page-node-id="navDsh0002x1y2z3a4b5">仪表盘</a>
+      <a href="#contact"    class="mob-link py-2.5" data-page-node-id="gtGaAYqwI6WFkDBqq7FCS2">联系我</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ============================ 01 / HERO ============================ -->
+<section id="home" class="relative overflow-hidden pt-[60px]" data-page-node-id="kIr1j8AdoEBNx6ABttBnx6">
+  <!-- 极光氛围：两团缓慢漂移的蓝色光斑 -->
+  <div class="absolute -top-24 -right-32 w-[520px] h-[520px] rounded-full glow aurora-slow blur-2xl pointer-events-none" data-page-node-id="yKuCtSjNLd4D3heEuloHR4"></div>
+  <div class="absolute top-40 -left-40 w-[420px] h-[420px] rounded-full glow aurora-slow blur-3xl pointer-events-none" style="animation-duration:26s;animation-delay:-8s" data-page-node-id="vkmncTCCHAbB4cUS8yGRHn"></div>
+
+  <div class="relative mx-auto max-w-6xl px-6 pt-16 pb-20 md:pt-24 md:pb-28 grid md:grid-cols-12 gap-12 items-center" data-page-node-id="Pzmxl8Mg3sVikNSN33cnxD">
+
+    <!-- 左：文案 -->
+    <div class="md:col-span-7 reveal" data-page-node-id="smoJl0i9M9FBQ630XrHmWY">
+      <p class="text-[11px] font-semibold tracking-[0.28em] text-brand mb-5" data-page-node-id="9iaANwT1pVD3bnD7mzRTTE">01 / PROFILE</p>
+
+      <p class="text-sm font-medium tracking-[0.18em] text-ink-3 mb-3" data-page-node-id="A1Al3qELuwaBmK0gFEem0Q">HELLO, I'M</p>
+
+      <h1 class="text-[52px] sm:text-[68px] lg:text-[80px] leading-[1.02] font-extrabold tracking-tight text-ink" data-page-node-id="AEMRKmCmgNwXysEEeZaKrI">
+        宋一鸣
+      </h1>
+
+      <div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2" data-page-node-id="wEhngMKYEAGaHlkFzpqltV">
+        <span class="text-lg sm:text-xl font-semibold text-brand" data-page-node-id="vVoyJx4UnQBSvNkuXm6x2i">数据分析实习生</span>
+        <span class="w-px h-5 bg-line" data-page-node-id="CFaPWsRdMUD600bhQxK4e9"></span>
+        <span class="text-lg sm:text-xl font-medium text-ink-2" data-page-node-id="GN0zwvmvNEKfl9IrmB5EOU">Business Intelligence</span>
+      </div>
+
+      <p class="mt-6 max-w-xl text-[15px] leading-relaxed text-ink-2" data-page-node-id="g6wryBTMSOEjavKuOBDAhK">
+        用数据讲清业务，让每个决策都有依据。<br class="hidden sm:block" data-page-node-id="niLeJXOayFnoWB1JjhKhhu" />
+        从指标体系搭建、异动归因到看板落地，把散落的数据变成可以执行的结论。
+      </p>
+
+      <!-- 关键信息 chips -->
+      <div class="mt-7 flex flex-wrap gap-2" data-page-node-id="iVLnzCzcy1lXczSZIAQFru">
+        <span class="rounded-full border border-brand-line bg-brand-soft px-3 py-1.5 text-[12px] font-medium text-brand-deep" data-page-node-id="KNv31Fak8FcYE9rCDKaqIO">金融科技 · 本科在读</span>
+        <span class="rounded-full border border-brand-line bg-brand-soft px-3 py-1.5 text-[12px] font-medium text-brand-deep" data-page-node-id="1f81ez47UdmcvzKCBacPJq">数据运营实习经历</span>
+        <span class="rounded-full border border-brand-line bg-brand-soft px-3 py-1.5 text-[12px] font-medium text-brand-deep" data-page-node-id="5wEmO8Y5r35AGWJTIR4si9">Tableau / Python / SQL</span>
+      </div>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3" data-page-node-id="HL2hJLsdThYC00iWJDXThM">
+        <a href="#projects" class="glow-fill inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-deep hover:-translate-y-0.5" data-page-node-id="xnX8OZImGrUW16AxpDyicD">
+          探索项目
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" data-page-node-id="hRNgdCoa4xNBvsLeYDPeAn"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-6 6 6-6 6" data-page-node-id="b7k5XT4z2bORU5uA4HgRe5"/></svg>
+        </a>
+        <a href="#portfolio" class="glow-hover inline-flex items-center gap-2 rounded-xl border border-line bg-white px-6 py-3 text-sm font-semibold text-ink-2 hover:-translate-y-0.5" data-page-node-id="ocdvtm3IzirPgxKf1zYX4W">
+          浏览作品
+        </a>
+      </div>
+    </div>
+
+    <!-- 右：照片卡片（3D 悬浮） -->
+    <div class="md:col-span-5 reveal" data-page-node-id="oFUMI27legn9mtmXcgMlBh">
+      <div class="relative mx-auto max-w-[320px]" data-page-node-id="99mN4ExYYd8oD1cxtwquoF">
+        <div class="absolute -inset-6 rounded-[28px] glow blur-xl pointer-events-none" data-page-node-id="WWYXbLbZX1w8x4zcw6kCw0"></div>
+
+        <div class="photo-3d photo-frame relative rounded-[22px] border border-brand-line bg-white p-2.5 shadow-[0_18px_40px_-12px_rgba(37,99,235,.28)]" data-page-node-id="Ua8aHnX5pHXSBSLBU4BzEH">
+          <img
+            src="resume-assets/image1.jpg"
+            onerror="this.onerror=null;this.style.visibility='hidden';"
+            alt="宋一鸣 证件照"
+            class="w-full aspect-[3/4] object-cover rounded-[14px]" data-page-node-id="zIEgxo5TqOcQnqTYxIOFVZ" />
+        </div>
+
+        <!-- 浮动信息卡 1 -->
+        <div class="absolute -left-5 bottom-16 hidden sm:flex items-center gap-2.5 rounded-2xl border border-line bg-white/95 px-4 py-3 shadow-[0_10px_30px_-10px_rgba(15,23,42,.18)] backdrop-blur" data-page-node-id="o33S4TzPybheQDpR2KOwDT">
+          <span class="grid place-items-center w-8 h-8 rounded-lg bg-brand-soft text-brand" data-page-node-id="VT6ZfTTmDHrGpzJpk5sKCc">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" data-page-node-id="RxuIUxdF2wIv7gMfPAGB7G"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 7-7" data-page-node-id="k7YhtwdwH4BEiOGh4RZ34G"/></svg>
+          </span>
+          <span class="leading-tight" data-page-node-id="ZB0W6wZ4eNFbFofwlyjKet">
+            <span class="block text-[15px] font-bold text-ink tnum" data-page-node-id="huB0bfrdCcYnKRRSuX4sQT">+15%</span>
+            <span class="block text-[11px] text-ink-3" data-page-node-id="chbA4YUdfg4ibBoq0HWYlY">账号涨粉效率</span>
+          </span>
+        </div>
+
+        <!-- 浮动信息卡 2 -->
+        <div class="absolute -right-4 top-10 hidden sm:flex items-center gap-2.5 rounded-2xl border border-line bg-white/95 px-4 py-3 shadow-[0_10px_30px_-10px_rgba(15,23,42,.18)] backdrop-blur" data-page-node-id="gBTkfHsQ2NoRMpmq6dSHgV">
+          <span class="grid place-items-center w-8 h-8 rounded-lg bg-brand-soft text-brand" data-page-node-id="Ykru63SjgfxnqmMDlF7iDi">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" data-page-node-id="DM7NTDKw1ZguxrcpcQjRXV"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h10" data-page-node-id="hQFb26UUOnaL68BaakamVK"/></svg>
+          </span>
+          <span class="leading-tight" data-page-node-id="yje3bBTGQ4yCvdLAtEYIt3">
+            <span class="block text-[15px] font-bold text-ink tnum" data-page-node-id="CI1mqgrJfs930Pj49O8pHS">7 家</span>
+            <span class="block text-[11px] text-ink-3" data-page-node-id="WYQYd7THkSzCkkJxC2E5JC">门店日报自动化</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================ 02 / 专业技能 ============================ -->
+<section id="skills" class="bg-bg-alt border-y border-line" data-page-node-id="gEVMAmzw2TzNdQvh2ZwLKx">
+  <div class="mx-auto max-w-6xl px-6 py-20 md:py-28" data-page-node-id="LmzEFXCgLhaBbaH6n0mGaz">
+
+    <div class="reveal mb-12 md:mb-16" data-page-node-id="MtzETsXUJZke9EEVWAUzCd">
+      <p class="text-[11px] font-semibold tracking-[0.28em] text-brand mb-3" data-page-node-id="85jAxYPiMXEClcXpxUg5E2">02 / CAPABILITIES</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight" data-page-node-id="20NqbzSCTmuv00UeHbazUB">专业技能</h2>
+      <p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-2" data-page-node-id="yAtDRepFOucUKmSDHeccvp">
+        以业务问题为起点，用指标体系和数据工具找到答案 —— 能力覆盖分析链路、数据工具与协作表达三层。
+      </p>
+    </div>
+
+    <div id="skillsGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-page-node-id="k5IgdMjZzXaQaAj8o0bF9x"><!-- JS 渲染 --></div>
+
+  </div>
+</section>
+
+
+<!-- ============================ 03 / 实习经历 ============================ -->
+<section id="experience" data-page-node-id="Obuk6KfnFxvlRh0qtEyHCH">
+  <div class="mx-auto max-w-6xl px-6 py-20 md:py-28" data-page-node-id="wgRDHcWKiB6IjVlCFRfaq0">
+
+    <div class="reveal mb-12 md:mb-16" data-page-node-id="RcIlSEm4rq79Jg9AQgaTX8">
+      <p class="text-[11px] font-semibold tracking-[0.28em] text-brand mb-3" data-page-node-id="u3Un6XCADk36K1kFFmC6bP">03 / EXPERIENCE</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight" data-page-node-id="Y958l1qTNEaPqULb7M4OYi">实习经历</h2>
+      <p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-2" data-page-node-id="vBNAvPab7RduDdlDmtJnYl">
+        在真实业务里做过完整闭环：从数据采集、指标监控，到异动定位、归因分析，最后落到可执行的经营建议。
+      </p>
+    </div>
+
+    <div id="experienceList" class="timeline pl-8 md:pl-10 space-y-10" data-page-node-id="2qK9nz7iAMKpk75U5IHTFW"><!-- JS 渲染 --></div>
+
+  </div>
+</section>
+
+
+<!-- ============================ 04 / 项目经历 ============================ -->
+<section id="projects" class="bg-bg-alt border-y border-line" data-page-node-id="KFst96EB62XhyQAMF4EQfM">
+  <div class="mx-auto max-w-6xl px-6 py-20 md:py-28" data-page-node-id="OrjWWxoGcFgKvH4kHxY1VD">
+
+    <div class="reveal mb-12 md:mb-16" data-page-node-id="uM3EUH4Guct4KXsDoCHG0j">
+      <p class="text-[11px] font-semibold tracking-[0.28em] text-brand mb-3" data-page-node-id="Qdj1bQ5j7kHFBFC1tYP9so">04 / PROJECTS</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight" data-page-node-id="vnKwckEIckyhnoRE1uP7Df">项目经历</h2>
+      <p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-2" data-page-node-id="9AG3d1shDacva0aVG6NtJ9">
+        四个从 0 到 1 的完整项目：数据清洗、看板搭建、业务诊断与开品研究，每个都能追溯到具体的工具与产出。
+      </p>
+    </div>
+
+    <div id="projectList" class="space-y-5" data-page-node-id="6CB6EVQdQ3jcZD2foYvQv6"><!-- JS 渲染 --></div>
+
+  </div>
+</section>
+
+
+<!-- ============================ 05 / 作品展示 ============================ -->
+<section id="portfolio" data-page-node-id="aV2YKgL6C269MV1arZF0km">
+  <div class="mx-auto max-w-6xl px-6 py-20 md:py-28" data-page-node-id="YsIAi78uU5ETGwCe9Bfke3">
+
+    <div class="reveal mb-10" data-page-node-id="Qbl92T110Y5Z3H2LiEtv4h">
+      <p class="text-[11px] font-semibold tracking-[0.28em] text-brand mb-3" data-page-node-id="E6V6NNv5JdHR2D30Hy8yDv">05 / PORTFOLIO</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight" data-page-node-id="85AUlHCGuxcMRYkADUEE3y">作品展示</h2>
+      <p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-2" data-page-node-id="qDEthKJS86KaTAW4ThgrM1">
+        看板、报告与代码的实物截图。每个作品都配了二维码，可以直接扫码查看。
+      </p>
+    </div>
+
+    <!-- 过滤器 -->
+    <div id="filters" class="reveal mb-9 flex flex-wrap gap-2.5" data-page-node-id="AkvZWBTbH5yAreK77eLATh"><!-- JS 渲染 --></div>
+
+    <div id="portfolioGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-page-node-id="VJGyAACw0W5iTbyA3FMW3H"><!-- JS 渲染 --></div>
+
+    <p id="emptyTip" class="hidden py-16 text-center text-sm text-ink-3" data-page-node-id="miuH3mgzhrJ6DTVm2kB5iM">该分类下暂无作品</p>
+  </div>
+</section>
+
+
+<!-- ============================ 06 / 数据仪表盘 ============================ -->
+<section id="dashboard" class="bg-bg-alt border-y border-line" data-page-node-id="dshB0ard0001x1y2z3a4b5">
+  <div class="mx-auto max-w-6xl px-6 py-20 md:py-28" data-page-node-id="dshB0ard0002x1y2z3a4b5">
+
+    <div class="reveal mb-12 md:mb-16" data-page-node-id="dshB0ard0003x1y2z3a4b5">
+      <p class="text-[11px] font-semibold tracking-[0.28em] text-brand mb-3" data-page-node-id="dshB0ard0004x1y2z3a4b5">06 / DASHBOARD</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight" data-page-node-id="dshB0ard0005x1y2z3a4b5">数据仪表盘</h2>
+      <p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-2" data-page-node-id="dshB0ard0006x1y2z3a4b5">
+        三张图对应我每天在做的三个动作 ——
+        <span class="font-medium text-ink">看转化</span>、<span class="font-medium text-ink">盯趋势</span>、<span class="font-medium text-ink">找归因</span>。
+        它们不是示意图：图表由本页实时渲染，口径取自实习与项目里的真实业务，数值已做脱敏与等比缩放。
+      </p>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-2" data-page-node-id="dshB0ard0007x1y2z3a4b5">
+
+      <!-- 图 1：转化漏斗 -->
+      <article class="chart-card reveal card-hover flex flex-col rounded-2xl border border-line bg-white p-6 shadow-[0_1px_3px_rgba(15,23,42,.06)]" data-page-node-id="dshB0ard0008x1y2z3a4b5">
+        <header class="mb-2 flex items-start justify-between gap-3" data-page-node-id="dshB0ard0009x1y2z3a4b5">
+          <div data-page-node-id="dshB0ard0010x1y2z3a4b5">
+            <h3 class="text-[15px] font-semibold text-ink" data-page-node-id="dshB0ard0011x1y2z3a4b5">线上引流转化漏斗</h3>
+            <p class="mt-1 text-[12px] text-ink-3 tnum" data-page-node-id="dshB0ard0012x1y2z3a4b5">某眼科门诊 · 近 30 天 · 单位：人</p>
+          </div>
+          <span class="chart-kind" data-page-node-id="dshB0ard0013x1y2z3a4b5">转化分析</span>
+        </header>
+        <div id="chartFunnel" class="chart-box" data-page-node-id="dshB0ard0014x1y2z3a4b5"></div>
+        <p class="chart-insight mt-4 pt-4 border-t border-line" data-page-node-id="dshB0ard0015x1y2z3a4b5">
+          <span aria-hidden="true" class="text-brand" data-page-node-id="dshB0ard0016x1y2z3a4b5">▍</span>
+          <span data-page-node-id="dshB0ard0017x1y2z3a4b5">主要流失发生在<b>点击到咨询</b>这一段 —— 曝光到咨询只剩 <b>13.6%</b>；
+          而咨询到院核销有 <b>36.0%</b>，后端承接其实是健康的。所以优化预算没有撒在到院环节，
+          而是收口到商品页与咨询入口。</span>
+        </p>
+      </article>
+
+      <!-- 图 2：指标趋势 -->
+      <article class="chart-card reveal card-hover flex flex-col rounded-2xl border border-line bg-white p-6 shadow-[0_1px_3px_rgba(15,23,42,.06)]" data-page-node-id="dshB0ard0018x1y2z3a4b5">
+        <header class="mb-2 flex items-start justify-between gap-3" data-page-node-id="dshB0ard0019x1y2z3a4b5">
+          <div data-page-node-id="dshB0ard0020x1y2z3a4b5">
+            <h3 class="text-[15px] font-semibold text-ink" data-page-node-id="dshB0ard0021x1y2z3a4b5">门店营收与同比走势</h3>
+            <p class="mt-1 text-[12px] text-ink-3 tnum" data-page-node-id="dshB0ard0022x1y2z3a4b5">某连锁门店 · 12 个月 · 柱：营收（万元）</p>
+          </div>
+          <span class="chart-kind" data-page-node-id="dshB0ard0023x1y2z3a4b5">指标监控</span>
+        </header>
+        <div id="chartTrend" class="chart-box" data-page-node-id="dshB0ard0024x1y2z3a4b5"></div>
+        <p class="chart-insight mt-4 pt-4 border-t border-line" data-page-node-id="dshB0ard0025x1y2z3a4b5">
+          <span aria-hidden="true" class="text-brand" data-page-node-id="dshB0ard0026x1y2z3a4b5">▍</span>
+          <span data-page-node-id="dshB0ard0027x1y2z3a4b5">8 月自动化日报上线后，营收同比从 <b>7.6%</b> 一路抬到 <b>27.5%</b>，
+          且月度波动区间明显收窄。指标每天可见之后，异常基本在当天就被处理掉了，而不是月底复盘时才发现。</span>
+        </p>
+      </article>
+
+      <!-- 图 3：异动归因（跨两列，横向条形需要宽度） -->
+      <article class="chart-card reveal card-hover flex flex-col rounded-2xl border border-line bg-white p-6 shadow-[0_1px_3px_rgba(15,23,42,.06)] lg:col-span-2" data-page-node-id="dshB0ard0028x1y2z3a4b5">
+        <header class="mb-2 flex items-start justify-between gap-3" data-page-node-id="dshB0ard0029x1y2z3a4b5">
+          <div data-page-node-id="dshB0ard0030x1y2z3a4b5">
+            <h3 class="text-[15px] font-semibold text-ink" data-page-node-id="dshB0ard0031x1y2z3a4b5">线下成交人数下跌归因</h3>
+            <p class="mt-1 text-[12px] text-ink-3 tnum" data-page-node-id="dshB0ard0032x1y2z3a4b5">环比减少 296 人 · 按因素拆解贡献度 · 单位：人</p>
+          </div>
+          <span class="chart-kind" data-page-node-id="dshB0ard0033x1y2z3a4b5">异动归因</span>
+        </header>
+        <div id="chartAttr" class="chart-box chart-box--wide" data-page-node-id="dshB0ard0034x1y2z3a4b5"></div>
+        <p class="chart-insight mt-4 pt-4 border-t border-line" data-page-node-id="dshB0ard0035x1y2z3a4b5">
+          <span aria-hidden="true" class="text-brand" data-page-node-id="dshB0ard0036x1y2z3a4b5">▍</span>
+          <span data-page-node-id="dshB0ard0037x1y2z3a4b5">先确认数据无误、再剔除春节周期性回落，然后把 <b>-296 人</b> 拆到具体渠道上：
+          <b>预约量下滑一项就占了约五成</b>，是唯一需要立刻动作的；竞品分流和活动力度属可预期区间，
+          老客复购甚至小幅回补 —— 结论因此从「整体不好」收敛成了「盯住一个预约入口」。</span>
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================ 07 / 联系我 ============================ -->
+<section id="contact" class="bg-bg-alt border-t border-line" data-page-node-id="XkXxO384tVUAyQfCvhCxPG">
+  <div class="mx-auto max-w-6xl px-6 py-20 md:py-28" data-page-node-id="BJ3AzRtx6rEQqeiotQRJqH">
+
+    <div class="reveal grid md:grid-cols-12 gap-12" data-page-node-id="BtwL2DGME1lqrLDjvm9d5S">
+      <div class="md:col-span-6" data-page-node-id="l2LEc6UXHuwYfaxga4Aetu">
+        <p class="text-[11px] font-semibold tracking-[0.28em] text-brand mb-3" data-page-node-id="IG76L8364ijSdyPF8ZFF5I">07 / CONTACT</p>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight" data-page-node-id="8hYp543TShFwVk29j34gnO">谢谢阅读。</h2>
+        <p class="mt-6 max-w-lg text-[15px] leading-relaxed text-ink-2" data-page-node-id="o1aEK0Gwbn3eMbRU9AYAAU">
+          我目前在找 <span class="font-semibold text-ink" data-page-node-id="2t0jyAehUmmB5MTDhnQ5N5">数据分析 / 数据运营</span> 方向的实习机会。
+          如果你觉得我的经历和你的团队匹配，欢迎随时联系我 —— 聊业务问题、聊数据口径，或者只是聊聊都行。
+        </p>
+
+        <a href="mailto:18372331313@163.com"
+           class="glow-fill mt-8 inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-deep hover:-translate-y-0.5" data-page-node-id="A48RO3ygbgFjsFrLp01Di1">
+          给我发邮件
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" data-page-node-id="MGkMlB5b3fiZgvFuKj8cWV"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-6 6 6-6 6" data-page-node-id="XV4X5Hbx2uUaVo6ABGQskq"/></svg>
+        </a>
+      </div>
+
+      <div class="md:col-span-6 grid sm:grid-cols-2 gap-x-6 gap-y-7 self-center" data-page-node-id="Z1dT6jmkXkpbvY2VnHzvMu">
+        <div data-page-node-id="w5VzGBQ4G1nsYoQVnIFmvD">
+          <p class="text-[11px] font-semibold tracking-[0.2em] text-ink-3 mb-2" data-page-node-id="KpwNUWxQvAEBwKJSFfOhh9">EMAIL</p>
+          <a href="mailto:18372331313@163.com" class="text-[15px] font-medium text-ink hover:text-brand transition-colors break-all" data-page-node-id="LWAitBHQcobY6lGjcEp5w5">18372331313@163.com</a>
+        </div>
+        <div data-page-node-id="x05CsxBH114zYM4hUzq22L">
+          <p class="text-[11px] font-semibold tracking-[0.2em] text-ink-3 mb-2" data-page-node-id="qZpNODwbYhFuTDeXwUDjXa">PHONE</p>
+          <a href="tel:18372331313" class="text-[15px] font-medium text-ink hover:text-brand transition-colors tnum" data-page-node-id="ghop8Fcj0kq3RhwfFDDn9L">183 7233 1313</a>
+        </div>
+        <div data-page-node-id="NyDkjqUkZObOTaWDIvEbeH">
+          <p class="text-[11px] font-semibold tracking-[0.2em] text-ink-3 mb-2" data-page-node-id="LZVXm0wS7MNm9Jit1HOx0F">WECHAT</p>
+          <p class="text-[15px] font-medium text-ink" data-page-node-id="w2qhsLYTEjkVkJShxWkSM2">_keykeykiyomi_</p>
+        </div>
+        <div data-page-node-id="qAHyk4kVuqFBUAloHo7E9h">
+          <p class="text-[11px] font-semibold tracking-[0.2em] text-ink-3 mb-2" data-page-node-id="nkexgE5k56HzvCCjiBbcP6">BASE</p>
+          <p class="text-[15px] font-medium text-ink" data-page-node-id="YViY2LHEKPtFyXnm3wyJhD">武汉</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================ 页脚 ============================ -->
+<footer class="border-t border-line" data-page-node-id="ANRKYafQOGaBZ77X7VShVo">
+  <div class="footer-inner mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-ink-3" data-page-node-id="Vkdmk2BAlAVztAhRfkc8A5">
+    <p data-page-node-id="6pdkDcNjlsYG3NOO0vJVJh">© <span id="year" class="tnum" data-page-node-id="Yrgk4wHvaNZgpvfxEC2aJk"></span> 宋一鸣 · Designed &amp; Built with care</p>
+    <p data-page-node-id="A0oMDCnWpLQ8BaGcifeGck">数据分析 / 数据运营 · Business Intelligence</p>
+  </div>
+</footer>
+
+
+<!-- 回到顶部 -->
+<button id="toTop" class="glow-fill fixed right-5 bottom-5 z-40 hidden grid place-items-center w-11 h-11 rounded-full bg-brand text-white shadow-lg hover:bg-brand-deep hover:-translate-y-0.5" aria-label="回到顶部" data-page-node-id="VNCTBEuFGvNNQzmy139juC">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" data-page-node-id="KZAelRNWBAiYPuileeXZLo"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m-6 6 6-6 6 6" data-page-node-id="T2gb0vUHBm8vwB94FEw1hZ"/></svg>
+</button>
+
+
+<!-- ============================ 作品灯箱 ============================ -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="作品预览" data-page-node-id="cRcjNgc7tnfXvz2XmCWlUl">
+  <div class="lightbox__box" data-page-node-id="2Gzh5quK5wb3OSgMH5Dc4F">
+    <div class="lightbox__viewport" data-page-node-id="Oa99axfz6oAGbfmfilYC5I">
+      <!-- 初始不给 src：空的 src="" 会让浏览器去请求当前页地址 -->
+      <img id="lbImg" class="lightbox__img" alt="" data-page-node-id="pHLrTzZMbleCFJqEiDYUxC" />
+    </div>
+
+    <div class="lightbox__bar" data-page-node-id="JjHHC3SSc6ASRLfvQm8R6N">
+      <div class="lightbox__title" data-page-node-id="lMzNbsBqdu6WdFLc9VO6cE">
+        <b id="lbTitle" data-page-node-id="OcqUrMMthRS0GAsEfAfLIR"></b>
+        <span id="lbDesc" data-page-node-id="ufG7d0GDZhPp1MsIfL1TUV"></span>
+      </div>
+
+      <img id="lbQr" class="lb-qr" alt="扫码查看" data-page-node-id="Jxjre5njScSotKkNQGfQIC" />
+      <span id="lbCount" class="text-[12px] font-semibold text-ink-3 tnum whitespace-nowrap" data-page-node-id="4ibU57csI0wRUtOSLF5Nzc"></span>
+
+      <button id="lbPrev" class="lb-btn" type="button" aria-label="上一个作品" data-page-node-id="AUkeJ6wBbCqyrFIIWrC4A5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" data-page-node-id="8vlTPiXGryOVAz0PQo4HIJ"><path stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7" data-page-node-id="Uj75cmuRg1xAohSIrjYhbT"/></svg>
+      </button>
+      <button id="lbNext" class="lb-btn" type="button" aria-label="下一个作品" data-page-node-id="eiDzrfudk9fXAj8DBDUxL9">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" data-page-node-id="vA6il2Fj4aQ0mK6IPRqx39"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" data-page-node-id="xTbtunxrZYADiC1dU6hhgw"/></svg>
+      </button>
+
+      <a id="lbLink" class="lb-btn lb-btn--brand" href="#" target="_blank" rel="noopener noreferrer" data-page-node-id="yMw4VZBNVBAuDPSh30EBe3">
+        打开作品
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" data-page-node-id="1bPUCHbTEFPBFBrRwROJx9"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8" data-page-node-id="Dw4oDFbZz02rD0E3tLZWVG"/></svg>
+      </a>
+
+      <button id="lbClose" class="lb-btn" type="button" aria-label="关闭预览" data-page-node-id="pC7ZzJaHgIVOsKyMjyvtIL">关闭</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* ============================================================
+   数据层 —— 直接由简历 PPT 提取的 resume.json 整理而来
+   想改内容，改下面这个 RESUME 对象即可，页面会自动渲染
+   ============================================================ */
+const RESUME = {
+  name: '宋一鸣',
+
+  skills: [
+    {
+      icon: 'chart',
+      name: '数据分析能力',
+      desc: '从指标体系搭建、业务拆解到异动定位与归因复盘，覆盖完整分析链路。',
+      tags: ['指标体系', '量化测算', '归因分析', '异动分析', '业务诊断', '用户行为分析', '杜邦分析', 'PEST 分析', 'SWOT 分析', '计量经济学']
+    },
+    {
+      icon: 'code',
+      name: '数据工具',
+      desc: 'Excel / Python 做清洗加工，MySQL 做存储与查询，Tableau 做看板呈现。',
+      tags: ['Excel', 'Tableau', 'MySQL', 'Python', 'Tableau Prep Builder', '影刀 RPA', 'SPSS']
+    },
+    {
+      icon: 'doc',
+      name: '办公与协作',
+      desc: '结构化写作与方案汇报，能把分析结论讲清楚、讲动人。',
+      tags: ['PPT', '幕布', '石墨文档', '秀米', '飞书']
+    }
+  ],
+
+  experience: [
+    {
+      kind: 'work',
+      period: '2026年6月 — 2026年9月',
+      org: '武汉大学附属爱尔眼科医院',
+      role: '数据运营（实习）',
+      bullets: [
+        '经营监控：基于美团搭建七家门诊自动化日报周报，采集浏览转化购买咨询等核心指标，监控异常值定位归因，输出经营优化建议',
+        'GEO优化：发布文章优化武汉大学附属爱尔眼科医院在 AI 搜索中的曝光占比与排名，跟踪排序变化，量化评估内容优化策略效果',
+        '投放监测：监控聚光广告投放全链路数据，跟踪平台引流及线索获客指标，评估投放渠道获客质量，为投放策略调整提供数据支撑',
+        '内容洞察：汇总达人探店、素人种草笔记曝光互动引流数据，拆解不同内容形式引流效率，提炼线上宣传优化方向，赋能到院转化',
+        '竞品对标：持续收集区域同类型眼科机构线上套餐、投放与口碑数据，横向对比流量转化差异，输出竞品分析与差异化的运营建议',
+        '直播复盘：跟踪小程序直播的观看、互动、留资转化数据，统计抽奖活动参与度，复盘直播转化链路，迭代直播内容与活动策略'
+      ]
+    },
+    {
+      kind: 'edu',
+      period: '2024年9月 — 2028年6月',
+      org: '武汉科技大学',
+      role: '金融科技 · 本科在读',
+      bullets: [],
+      tags: ['概率论与数理统计', '机器学习', 'Python 语言程序设计基础', '数据处理与金融数据分析', '微观/宏观经济学', '计量经济学', '金融工程学']
+    }
+  ],
+
+  projects: [
+    {
+      name: '门店运营数据可视化分析平台',
+      subtitle: 'WorkBuddy',
+      period: '2026.08',
+      desc: '面向门店经营的多源数据清洗与可视化监控平台，支持管理层总览与明细下钻，替换 Excel 源文件即可整图刷新。',
+      image: 'resume-assets/image13.png',
+      tools: ['Python', 'Streamlit', 'HTML', 'Excel', 'GitHub'],
+      highlights: [
+        '数据清洗：使用Excel、Python脚本清洗门店多源业务数据，去重、处理异常值、统一数据格式等统一分析口径并提取核心指标',
+        '看板搭建：基于Streamlit与HTML搭建管理层总览视图及详细情况，直观展示门店各项营收缺口、同环比数据及异常高亮告警逻辑',
+        '数据核验：针对AI生成代码易产生逻辑偏差，构建总值核验、随机抽样与双算法交叉验证机制，规避AI幻觉，保障数据决策精确性',
+        '监控转型：利用Prompt引导AI，严格复用原有业务分析口径；通过同路径替换Excel文件即全图刷新的机制，打造动态监控看板',
+        '工程管理：利用Github建立主干与功能分支，实现新功能的安全测试与任意版本的一键回溯，输出配套操作说明及Demo局限备注'
+      ]
+    },
+    {
+      name: 'B站 up 主数据监控看板',
+      subtitle: '影刀 RPA · MySQL · Tableau',
+      period: '2026.06 — 2026.07',
+      desc: '从数据采集、加工到看板呈现的全链路账号监控方案，覆盖粉丝画像与播放、点赞、投币等核心视频指标。',
+      image: 'resume-assets/image10.png',
+      tools: ['影刀 RPA', 'MySQL', 'SQL', 'Tableau', 'Excel'],
+      highlights: [
+        '数据采集：基于影刀RPA设计自动化爬虫流程，实现对目标UP主粉丝画像及视频核心指标（播放、点赞、投币）的全量自动化获取',
+        '数据处理：利用RPA内置功能对原始数据进行去重、格式化与校验，按预设模板写入Excel；配置每日定时触发机制，实现报表推送',
+        '数据加工：将Excel表格数据批量导入MySQL数据库，通过编写SQL语句完成数据清洗、字段加工、多表关联查询及数据整合处理',
+        '看板搭建：基于Tableau搭建UP主数据监控看板，通过指标拆解与逻辑运算构建衍生指标，实现账号运营数据的监控与趋势洞察',
+        '复盘优化：定期追踪核心指标波动情况，对异常数据进行定位与归因分析，形成数据复盘报告，助力账号涨粉效率提升 15% 以上'
+      ]
+    },
+    {
+      name: '互联网金融业务诊断分析',
+      subtitle: '业务拆解 · 指标体系 · 归因',
+      period: '2026.04 — 2026.05',
+      desc: '围绕互联网金融机构贷款业务展开的业务诊断，从业务流程拆解到指标体系搭建，并通过异动与归因分析定位业务问题。',
+      image: 'resume-assets/image14.png',
+      imagePos: 'top',   /* 竖版看板长图：小屏裁成窄条时保留顶部标题栏与 KPI 区 */
+      tools: ['业务拆解', '指标体系 0-1', '异动分析', '归因分析'],
+      highlights: [
+        '业务拆解：全面拆解贷款过程，包括线上业务、线下业务，详细分析用户侧业务动作，输出获客来源及互联网金融公司的商业模式',
+        '指标体系：基于互联网金融公司的业务过程快速提炼核心指标，构建业务公式，从0-1搭建完整的指标体系，提出准确的数据需求',
+        '异动分析：查看异常数据，准确地定位期望和事实之间的差距，用数据量化差距，结合数据建设并找到补足差距有效且精准的方法',
+        '归因分析：确保数据无误，将问题转化为具体数据指标上的差距，排除周期性外部波动的影响，定位得出线下成交人数下跌的原因'
+      ]
+    },
+    {
+      name: '兴趣电商开品报告（冰红茶）',
+      subtitle: '基于巨量云图',
+      period: '2026.02 — 2026.03',
+      desc: '基于巨量云图数据的茶饮料行业开品研究，从行业、流量、爆款、视觉四个维度推导新品假设并完成概念设计。',
+      image: 'resume-assets/image2.png',
+      tools: ['巨量云图', '行业分析', '爆款拆解', 'ICE 模型'],
+      highlights: [
+        '行业分析：收集茶饮料行业相关信息，总结茶饮料行业发展历程、市场规模、发展趋势、产品特点，提出关键洞察，作出研究总结',
+        '流量分析：通过对各关键词类型下的关键词分析，收集GMV排名前列的关键词信息，分析关键词出现原因，总结茶饮料热卖卖点',
+        '爆款分析：通过研究GMV排名靠前的茶饮料销售数据、详情页、购后评价等，总结爆款产品必须击中的用户痛点、Aha时刻、爆点',
+        '视觉研究：分别从曝光率、互动率、收藏率入手研究各维度排名前列的短视频的视觉创意，分析视觉创意对提升成交转换率的作用',
+        '开品假设：设计 3 款差异化新品概念，经 ICE 模型评估确定电解质冰红茶为核心产品假设，不久康师傅冰红茶Energy在抖音上线'
+      ]
+    }
+  ],
+
+  portfolio: [
+    {
+      title: '兴趣电商开品报告（冰红茶）',
+      desc: '基于巨量云图的茶饮料行业开品研究，覆盖行业分析、关键词流量、爆款拆解与短视频视觉研究。',
+      thumb: 'resume-assets/image2.png',
+      qr: 'resume-assets/image3.png',
+      url: 'https://k01ukh5jq36.feishu.cn/wiki/SlZNwT8bWi7FXekyHf1cn2OenER',
+      tags: ['巨量云图', '行业分析', '开品研究'],
+      filters: ['行业研究']
+    },
+    {
+      title: 'B站 up 主数据监控看板 & 数据分析周报 & SQL 代码',
+      desc: '影刀 RPA 自动采集 + MySQL 加工 + Tableau 呈现的账号监控看板，配套数据分析周报与 SQL 代码集。',
+      thumb: 'resume-assets/image9.png',
+      qr: 'resume-assets/image8.png',
+      url: 'https://k01ukh5jq36.feishu.cn/wiki/TUQ6w2LZJitE2rkaZ8dc4UMmnXl',
+      tags: ['影刀 RPA', 'MySQL', 'SQL', 'Tableau'],
+      filters: ['Tableau', 'SQL', 'RPA']
+    },
+    {
+      title: '日常数分业务监控看板',
+      desc: '面向日常业务监控的 Tableau 看板集合，用于核心指标追踪与异常洞察。',
+      thumb: 'resume-assets/image4.png',
+      qr: 'resume-assets/image7.png',
+      url: 'https://k01ukh5jq36.feishu.cn/wiki/XdM1wPFMEiPoEQk07Ppc0nyxnYc',
+      tags: ['Tableau', '数据看板', '业务监控'],
+      filters: ['Tableau', 'Excel']
+    },
+    {
+      title: '门店运营数据可视化分析平台',
+      desc: '基于 Streamlit + HTML 搭建的门店营收监控平台，含总览视图、明细下钻与异常高亮告警。',
+      thumb: 'resume-assets/image13.png',
+      qr: 'resume-assets/image12.png',
+      url: 'https://ikunmiracle-ops.github.io/data-dashboard/',
+      tags: ['Python', 'Streamlit', 'HTML', 'Excel'],
+      filters: ['Python', 'Excel']
+    }
+  ]
+};
+
+/* ============================================================
+   图标（内联 SVG，无需图标库）
+   ============================================================ */
+const ICONS = {
+  chart: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 19h16M7 16V9m5 7V5m5 11v-5"/>',
+  code:  '<path stroke-linecap="round" stroke-linejoin="round" d="M8 8 4 12l4 4m8-8 4 4-4 4M14 5l-4 14"/>',
+  doc:   '<path stroke-linecap="round" stroke-linejoin="round" d="M7 4h7l4 4v12H7zM14 4v4h4M9 13h6M9 17h4"/>',
+  work:  '<path stroke-linecap="round" stroke-linejoin="round" d="M3 8h18v11H3zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+  edu:   '<path stroke-linecap="round" stroke-linejoin="round" d="M12 4l9 5-9 5-9-5 9-5zm0 9v7m5-4.5V15a3 3 0 0 1-6 0v-.5"/>',
+  pin:   '<path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>'
+};
+
+/* ============================================================
+   工具函数
+   ============================================================ */
+/* 项目要点默认显示条数，超过则折叠 */
+const VISIBLE_HL = 3;
+
+const tag = (t) => `<span class="rounded-full border border-brand-line bg-brand-soft px-2.5 py-1 text-[11.5px] font-medium text-brand-deep whitespace-nowrap">${t}</span>`;
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+/* 图片加载失败时的占位图 —— 用内联 SVG data URI，不依赖任何外部图床 */
+const IMG_FALLBACK = (label) => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">' +
+  '<rect width="600" height="400" fill="#EFF6FF"/>' +
+  '<rect x="1" y="1" width="598" height="398" fill="none" stroke="#DBEAFE" stroke-width="2"/>' +
+  '<text x="300" y="208" font-family="system-ui,sans-serif" font-size="24" font-weight="600" ' +
+  'fill="#2563EB" text-anchor="middle">' + label + '</text></svg>');
+
+/* ============================================================
+   02 / 专业技能
+   ============================================================ */
+document.getElementById('skillsGrid').innerHTML = RESUME.skills.map((s, i) => `
+  <article class="reveal card-hover rounded-2xl border border-line bg-white p-7 shadow-[0_1px_3px_rgba(15,23,42,.06)]"
+           style="transition-delay:${i * 70}ms">
+    <span class="grid place-items-center w-11 h-11 rounded-xl bg-brand-soft text-brand mb-5">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">${ICONS[s.icon] || ICONS.chart}</svg>
+    </span>
+    <h3 class="text-[17px] font-bold tracking-tight">${esc(s.name)}</h3>
+    <p class="mt-2.5 text-[13.5px] leading-relaxed text-ink-2">${esc(s.desc)}</p>
+    <div class="mt-5 flex flex-wrap gap-2">${s.tags.map(tag).join('')}</div>
+  </article>
+`).join('');
+
+/* ============================================================
+   03 / 实习经历 + 教育经历（时间线）
+   ============================================================ */
+document.getElementById('experienceList').innerHTML = RESUME.experience.map((e, i) => {
+  const isEdu = e.kind === 'edu';
+  return `
+  <article class="reveal relative" style="transition-delay:${i * 90}ms">
+    <!-- 时间线圆点 -->
+    <span class="absolute -left-8 md:-left-10 top-1.5 grid place-items-center w-4 h-4 rounded-full border-2 ${isEdu ? 'border-brand-line bg-white' : 'border-brand bg-white'}">
+      <span class="w-1.5 h-1.5 rounded-full ${isEdu ? 'bg-brand-line' : 'bg-brand'}"></span>
+    </span>
+
+    <div class="rounded-2xl border border-line bg-white p-6 md:p-7 shadow-[0_1px_3px_rgba(15,23,42,.06)]">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-soft border border-brand-line px-2.5 py-1 text-[11.5px] font-semibold text-brand-deep tnum">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 2"/></svg>
+          ${esc(e.period)}
+        </span>
+        <span class="text-[11px] font-semibold tracking-[0.18em] text-ink-3">${isEdu ? 'EDUCATION' : 'INTERNSHIP'}</span>
+      </div>
+
+      <div class="mt-4 flex items-start gap-3">
+        <span class="mt-0.5 grid place-items-center w-9 h-9 shrink-0 rounded-lg bg-bg-alt text-brand border border-line">
+          <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">${isEdu ? ICONS.edu : ICONS.work}</svg>
+        </span>
+        <div>
+          <h3 class="text-[17px] font-bold tracking-tight leading-snug">${esc(e.org)}</h3>
+          <p class="mt-0.5 text-[13.5px] font-medium text-brand">${esc(e.role)}</p>
+        </div>
+      </div>
+
+      ${e.bullets.length ? `
+        <ul class="mt-5 space-y-2.5">
+          ${e.bullets.map(b => {
+            const idx = b.indexOf('：');
+            const head = idx > 0 ? b.slice(0, idx) : '';
+            const body = idx > 0 ? b.slice(idx + 1) : b;
+            return `
+            <li class="flex gap-3 text-[13.5px] leading-relaxed text-ink-2">
+              <span class="mt-[7px] w-1.5 h-1.5 shrink-0 rounded-full bg-brand"></span>
+              <span>${head ? `<strong class="font-semibold text-ink">${esc(head)}：</strong>` : ''}${esc(body)}</span>
+            </li>`;
+          }).join('')}
+        </ul>` : ''}
+
+      ${e.tags ? `<div class="mt-5 flex flex-wrap gap-2">${e.tags.map(tag).join('')}</div>` : ''}
+    </div>
+  </article>`;
+}).join('');
+
+/* ============================================================
+   04 / 项目经历
+   ============================================================ */
+document.getElementById('projectList').innerHTML = RESUME.projects.map((p, i) => `
+  <article class="reveal card-hover rounded-2xl border border-line bg-white overflow-hidden shadow-[0_1px_3px_rgba(15,23,42,.06)]"
+           style="transition-delay:${i * 70}ms">
+    <div class="grid md:grid-cols-12">
+
+      <div class="md:col-span-4 lg:col-span-3 bg-bg-alt border-b md:border-b-0 md:border-r border-line">
+        <img src="${p.image || IMG_FALLBACK(p.name)}" onerror="this.onerror=null;this.src='${IMG_FALLBACK('Project')}';"
+             alt="${esc(p.name)}" loading="lazy"
+             class="shot-img w-full h-44 md:h-full object-cover${p.imagePos ? ' pos-' + p.imagePos : ''}" />
+      </div>
+
+      <div class="md:col-span-8 lg:col-span-9 p-6 md:p-7">
+        <div class="flex flex-wrap items-center gap-3">
+          <h3 class="text-[18px] font-bold tracking-tight">${esc(p.name)}</h3>
+          <span class="text-[11.5px] font-medium text-ink-3">${esc(p.subtitle)}</span>
+          <span class="ml-auto text-[11.5px] font-semibold text-brand tnum">${esc(p.period)}</span>
+        </div>
+
+        <p class="mt-3 text-[13.5px] leading-relaxed text-ink-2">${esc(p.desc)}</p>
+
+        <ul class="mt-4 space-y-2">
+          ${p.highlights.map((h, hi) => {
+            const idx = h.indexOf('：');
+            const head = idx > 0 ? h.slice(0, idx) : '';
+            const body = idx > 0 ? h.slice(idx + 1) : h;
+            /* 前 3 条常显，其余折起来（打印时会全部展开，见 @media print） */
+            const extra = hi >= VISIBLE_HL ? ' hl-extra' : '';
+            return `
+            <li class="hl-item text-[13px] leading-relaxed text-ink-2${extra}">
+              <span class="mt-[7px] w-1.5 h-1.5 shrink-0 rounded-full bg-brand" style="opacity:.7"></span>
+              <span>${head ? `<strong class="font-semibold text-ink">${esc(head)}：</strong>` : ''}${esc(body)}</span>
+            </li>`;
+          }).join('')}
+        </ul>
+
+        ${p.highlights.length > VISIBLE_HL ? `
+        <button type="button" class="hl-toggle glow-hover" data-hl-toggle aria-expanded="false"
+                data-more="展开全部 ${p.highlights.length - VISIBLE_HL} 条" data-less="收起">
+          <span data-hl-label>展开全部 ${p.highlights.length - VISIBLE_HL} 条</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>` : ''}
+
+        <div class="mt-5 pt-5 border-t border-line flex flex-wrap gap-2">${p.tools.map(tag).join('')}</div>
+      </div>
+    </div>
+  </article>
+`).join('');
+
+/* ============================================================
+   05 / 作品展示（含标签过滤）
+   ============================================================ */
+const ALL_FILTERS = ['全部', ...Array.from(new Set(RESUME.portfolio.flatMap(w => w.filters)))];
+
+const FILTER_BASE = 'filter-btn rounded-full border px-4 py-2 text-[12.5px] font-semibold';
+const FILTER_ON   = `${FILTER_BASE} glow-fill border-brand bg-brand text-white shadow-sm`;
+const FILTER_OFF  = `${FILTER_BASE} glow-hover border-line bg-white text-ink-2`;
+
+document.getElementById('filters').innerHTML = ALL_FILTERS.map((f, i) => `
+  <button data-filter="${esc(f)}" class="${i === 0 ? FILTER_ON : FILTER_OFF}">${esc(f)}</button>
+`).join('');
+
+document.getElementById('portfolioGrid').innerHTML = RESUME.portfolio.map((w, i) => `
+  <article class="portfolio-card reveal card-hover group rounded-2xl border border-line bg-white overflow-hidden shadow-[0_1px_3px_rgba(15,23,42,.06)]"
+           data-tags="${esc(w.filters.join(' '))}" data-idx="${i}" style="transition-delay:${i * 70}ms">
+
+    <div class="relative overflow-hidden bg-bg-alt">
+      <button type="button" class="thumb-btn" data-zoom="${i}" aria-label="放大查看：${esc(w.title)}">
+        <img src="${w.thumb}" onerror="this.onerror=null;this.src='${IMG_FALLBACK('Work')}';"
+             alt="${esc(w.title)}" loading="lazy"
+             class="shot-img w-full aspect-[16/10] object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+      </button>
+      <span class="zoom-hint" aria-hidden="true">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5M11 8v6M8 11h6"/>
+        </svg>
+      </span>
+      <div class="absolute inset-x-0 bottom-0 h-16 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+           style="background:linear-gradient(to top, var(--surface), transparent)"></div>
+    </div>
+
+    <div class="p-6">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-[15.5px] font-bold tracking-tight leading-snug">${esc(w.title)}</h3>
+        <span class="qr-badge shrink-0 rounded-lg border border-line bg-white p-1.5 shadow-[0_1px_3px_rgba(15,23,42,.06)]" title="扫码查看">
+          <img src="${w.qr}" onerror="this.onerror=null;this.style.display='none';" alt="二维码"
+               class="w-11 h-11 object-contain" />
+        </span>
+      </div>
+      <p class="mt-2.5 text-[13px] leading-relaxed text-ink-2">${esc(w.desc)}</p>
+      <div class="mt-4 flex flex-wrap gap-2">${w.tags.map(tag).join('')}</div>
+
+      <div class="mt-5 pt-4 border-t border-line flex items-center gap-2.5">
+        ${w.url ? `
+        <a href="${esc(w.url)}" target="_blank" rel="noopener noreferrer"
+           class="glow-hover inline-flex items-center gap-1.5 rounded-lg border border-brand-line bg-brand-soft px-3 py-1.5 text-[12.5px] font-semibold text-brand-deep">
+          打开作品
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>` : ''}
+        <button type="button" data-zoom="${i}"
+                class="glow-hover ${w.url ? '' : 'ml-auto '}inline-flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-semibold text-ink-2">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg>
+          放大查看
+        </button>
+      </div>
+    </div>
+  </article>
+`).join('');
+
+/* ---- 过滤逻辑 ---- */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.portfolio-card');
+const emptyTip = document.getElementById('emptyTip');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => { b.className = FILTER_OFF; });
+    btn.className = FILTER_ON;
+
+    const f = btn.dataset.filter;
+    let visible = 0;
+    cards.forEach(card => {
+      const hit = f === '全部' || card.dataset.tags.split(' ').includes(f);
+      card.classList.toggle('hidden', !hit);
+      if (hit) {
+        card.classList.remove('is-visible');
+        visible++;
+      }
+    });
+    emptyTip.classList.toggle('hidden', visible > 0);
+    requestAnimationFrame(() => {
+      cards.forEach(c => { if (!c.classList.contains('hidden')) c.classList.add('is-visible'); });
+    });
+  });
+});
+
+/* ============================================================
+   导航栏时钟
+   ============================================================ */
+const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+function tick() {
+  const d = new Date();
+  const p = n => String(n).padStart(2, '0');
+  document.getElementById('clock').textContent =
+    `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${WEEK[d.getDay()]} ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+}
+tick();
+setInterval(tick, 1000);
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============================================================
+   移动端菜单
+   ============================================================ */
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+document.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+/* ============================================================
+   滚动进场动画
+   ============================================================ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      en.target.classList.add('is-visible');
+      io.unobserve(en.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ============================================================
+   导航高亮 + 回到顶部
+   ============================================================ */
+const sections = ['home', 'skills', 'experience', 'projects', 'portfolio', 'contact'];
+const navLinks = document.querySelectorAll('.nav-link');
+const toTop = document.getElementById('toTop');
+
+function onScroll() {
+  const y = window.scrollY + 120;
+  let current = 'home';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= y) current = id;
+  });
+  navLinks.forEach(a => {
+    const on = a.getAttribute('href') === '#' + current;
+    a.classList.toggle('text-brand', on);
+    a.classList.toggle('font-semibold', on);
+  });
+
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('shadow-[0_4px_12px_rgba(15,23,42,.06)]', window.scrollY > 8);
+
+  toTop.classList.toggle('hidden', window.scrollY < 500);
+  toTop.classList.toggle('grid', window.scrollY >= 500);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ============================================================
+   深色模式切换（记忆在 localStorage，键名 resume-theme）
+   ============================================================ */
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+function syncThemeColor() {
+  if (themeMeta) themeMeta.setAttribute('content', root.classList.contains('dark') ? '#0F172A' : '#FFFFFF');
+}
+syncThemeColor();
+
+themeBtn.addEventListener('click', () => {
+  const toDark = !root.classList.contains('dark');
+
+  // 切换期间开一个短暂的全局颜色过渡，避免生硬跳变
+  root.classList.add('theme-anim');
+  root.classList.toggle('dark', toDark);
+  syncThemeColor();
+
+  try { localStorage.setItem('resume-theme', toDark ? 'dark' : 'light'); } catch (e) {}
+  setTimeout(() => root.classList.remove('theme-anim'), 420);
+});
+
+/* 跟随系统主题：用户没手动选过时才跟着变 */
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+  let saved = null;
+  try { saved = localStorage.getItem('resume-theme'); } catch (err) {}
+  if (saved) return;
+  root.classList.toggle('dark', e.matches);
+  syncThemeColor();
+});
+
+/* ============================================================
+   极光高光：鼠标在卡片上移动时，光晕跟着走
+   ============================================================ */
+document.querySelectorAll('.card-hover').forEach(card => {
+  card.addEventListener('pointermove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+
+/* ============================================================
+   作品灯箱：点缩略图放大，手机上也能点（原先只有二维码，手指点不动）
+   ============================================================ */
+const lb       = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lbImg');
+const lbTitle  = document.getElementById('lbTitle');
+const lbDesc   = document.getElementById('lbDesc');
+const lbQr     = document.getElementById('lbQr');
+const lbLink   = document.getElementById('lbLink');
+const lbCount  = document.getElementById('lbCount');
+const lbClose  = document.getElementById('lbClose');
+const lbPrev   = document.getElementById('lbPrev');
+const lbNext   = document.getElementById('lbNext');
+
+let lbList = [];
+let lbPos  = 0;
+let lbReturnFocus = null;
+
+function renderLb() {
+  const card = lbList[lbPos];
+  if (!card) return;
+  const w = RESUME.portfolio[Number(card.dataset.idx)];
+  if (!w) return;
+
+  lbImg.src = w.thumb;
+  lbImg.alt = w.title;
+  lbTitle.textContent = w.title;
+  lbDesc.textContent  = w.desc;
+
+  if (w.qr) { lbQr.src = w.qr; lbQr.style.display = ''; }
+  else      { lbQr.style.display = 'none'; }
+
+  if (w.url) {
+    lbLink.href = w.url;
+    lbLink.style.display = '';
+  } else {
+    lbLink.style.display = 'none';
+  }
+
+  lbCount.textContent = (lbPos + 1) + ' / ' + lbList.length;
+}
+
+function openLb(idx) {
+  const all = Array.from(document.querySelectorAll('.portfolio-card'));
+  // 只在「当前筛选结果」里翻页，所见即所得
+  const shown = all.filter(c => !c.classList.contains('hidden'));
+  lbList = shown.some(c => Number(c.dataset.idx) === idx) ? shown : all;
+  lbPos  = lbList.findIndex(c => Number(c.dataset.idx) === idx);
+  if (lbPos < 0) lbPos = 0;
+
+  lbReturnFocus = document.activeElement;
+  renderLb();
+  lb.classList.add('is-open');
+  document.documentElement.classList.add('lb-open');
+  lbClose.focus();
+}
+
+function closeLb() {
+  lb.classList.remove('is-open');
+  document.documentElement.classList.remove('lb-open');
+  lbImg.removeAttribute('src');
+  if (lbReturnFocus && lbReturnFocus.focus) lbReturnFocus.focus();
+}
+
+function stepLb(d) {
+  if (lbList.length < 2) return;
+  lbPos = (lbPos + d + lbList.length) % lbList.length;
+  renderLb();
+}
+
+/* 用事件委托，这样筛选后重新出现的卡片也照样能点 */
+document.addEventListener('click', (e) => {
+  const zoomBtn = e.target.closest('[data-zoom]');
+  if (zoomBtn) { openLb(Number(zoomBtn.dataset.zoom)); return; }
+
+  const hlBtn = e.target.closest('[data-hl-toggle]');
+  if (hlBtn) {
+    const art = hlBtn.closest('article');
+    const open = art.classList.toggle('hl-open');
+    hlBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    const label = hlBtn.querySelector('[data-hl-label]');
+    if (label) label.textContent = open ? hlBtn.dataset.less : hlBtn.dataset.more;
+  }
+});
+
+lbClose.addEventListener('click', closeLb);
+lbPrev.addEventListener('click', () => stepLb(-1));
+lbNext.addEventListener('click', () => stepLb(1));
+/* 点遮罩（而不是内容）时关闭 */
+lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+
+document.addEventListener('keydown', (e) => {
+  if (!lb.classList.contains('is-open')) return;
+  if (e.key === 'Escape')     { closeLb(); }
+  else if (e.key === 'ArrowLeft')  { stepLb(-1); }
+  else if (e.key === 'ArrowRight') { stepLb(1); }
+});
+
+/* ============================================================
+   数据仪表盘（ECharts · SVG 渲染器）
+   ------------------------------------------------------------
+   三个取舍，说明一下为什么这么写：
+
+   1) 配色不用滤镜、跟着主题重绘
+      ECharts 把颜色写成 SVG 属性，CSS 变量管不到它，所以深色模式必须
+      重新 setOption。用 MutationObserver 盯 html 的 class，切换时重绘。
+
+   2) 懒渲染 + 打印兜底
+      滚到区块才画（省掉首屏负担）；但打印/导出 PDF 时用户可能压根没滚到
+      这里，那样 PDF 里就是三块空白 —— 所以 beforeprint 里强制补齐。
+
+   3) 数据脱敏
+      口径取自实习与项目里的真实业务链路，数值做等比缩放；
+      保留真实的量级关系（比如预约量下滑确实占了总缺口的一半）。
+   ============================================================ */
+(function () {
+  const dashboard = document.getElementById('dashboard');
+  if (!dashboard || !window.echarts) return;
+
+  /* ---------- 数据（脱敏：口径真实，量级已等比缩放） ---------- */
+  const DATA = {
+    funnel: [
+      { name: '曝光展现', value: 62400 },
+      { name: '商品点击', value: 25700 },
+      { name: '咨询留资', value: 8490 },
+      { name: '到院核销', value: 3060 },
+      { name: '到院复购', value: 1120 }
+    ],
+    months:  ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+    revenue: [82.4, 78.9, 91.3, 88.6, 96.2, 104.7, 99.8, 112.4, 118.9, 125.3, 131.6, 139.2],
+    yoy:     [4.2, -1.8, 6.4, 3.1, 8.9, 12.4, 7.6, 15.2, 18.3, 21.7, 24.1, 27.5],
+    /* dir: -1 拖累 / +1 回补 —— 对应「异动归因」的贡献度分解 */
+    attr: [
+      { name: '线上到院预约量下滑', value: 148, dir: -1 },
+      { name: '促销活动力度减弱',   value: 76,  dir: -1 },
+      { name: '同城竞品分流',       value: 61,  dir: -1 },
+      { name: '客单价上升',         value: 33,  dir: -1 },
+      { name: '老客复购回补',       value: 22,  dir: 1 }
+    ]
+  };
+
+  /* ---------- 调色板：同一套蓝，深浅两版 ---------- */
+  const T = {
+    light: {
+      funnel:  ['#1E3A8A', '#2563EB', '#3B82F6', '#4F86EE', '#6D9BF0'],
+      barTop:  '#3B82F6', barBottom: '#A9CBFB',
+      line:    '#1E3A8A',
+      /* 由浅到深：拖累越大的因素颜色越重，一眼看出主因 */
+      attr:    ['#60A5FA', '#3B82F6', '#2563EB', '#1E3A8A'],
+      attrPos: '#DBEAFE', attrPosLine: '#2563EB',
+      grid:    '#E9EEF5', axis: '#94A3B8', label: '#475569', sub: '#94A3B8',
+      area:    'rgba(37,99,235,.07)',
+      tipBg:   'rgba(255,255,255,.98)', tipBd: '#DBEAFE', tipTx: '#0F172A'
+    },
+    dark: {
+      funnel:  ['#2563EB', '#3B82F6', '#4F86EE', '#6098F2', '#7BA9F5'],
+      barTop:  '#3B82F6', barBottom: '#1D4ED8',
+      line:    '#93C5FD',
+      /* 深色底上「更重」= 更亮，所以顺序反过来 */
+      attr:    ['#2563EB', '#3B82F6', '#60A5FA', '#93C5FD'],
+      attrPos: 'rgba(96,165,250,.14)', attrPosLine: '#60A5FA',
+      grid:    '#1B2740', axis: '#6F819A', label: '#A4B3CA', sub: '#6F819A',
+      area:    'rgba(96,165,250,.10)',
+      tipBg:   'rgba(19,30,51,.98)', tipBd: 'rgba(96,165,250,.30)', tipTx: '#E6EDF8'
+    }
+  };
+
+  const num = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const tipStyle = (c) => ({
+    backgroundColor: c.tipBg,
+    borderColor: c.tipBd,
+    borderWidth: 1,
+    padding: [9, 12],
+    textStyle: { color: c.tipTx, fontSize: 12 },
+    extraCssText: 'border-radius:10px;box-shadow:0 8px 24px -8px rgba(15,23,42,.28);'
+  });
+
+  /* ---------- 图 1：转化漏斗 ---------- */
+  function optFunnel(c) {
+    const base = DATA.funnel[0].value;
+    return {
+      animationDuration: 900,
+      animationEasing: 'cubicOut',
+      tooltip: Object.assign({ trigger: 'item',
+        formatter: (p) => {
+          const prev = p.dataIndex ? DATA.funnel[p.dataIndex - 1].value : null;
+          const step = prev ? (p.value / prev * 100).toFixed(1) + '%' : '—';
+          return '<b>' + p.name + '</b><br/>' +
+                 num(p.value) + ' 人 · 占曝光 ' + (p.value / base * 100).toFixed(1) + '%<br/>' +
+                 '环比上一环节 ' + step;
+        } }, tipStyle(c)),
+      series: [{
+        type: 'funnel',
+        left: '3%', right: '3%', top: 8, bottom: 8,
+        /* minSize 从 26% 提到 34%：不放宽的话最下面几层窄到装不下标签，
+           文字会压出梯形边界（第一版就踩了这个）。 */
+        minSize: '34%', maxSize: '100%',
+        sort: 'descending',
+        gap: 4,
+        funnelAlign: 'center',
+        /* 名称与数值分成两行 —— 单行「咨询留资 8,490」在窄层里一定溢出，
+           拆两行后每行只有四五个字，最窄那层也放得下。 */
+        label: {
+          show: true, position: 'inside',
+          fontSize: 11.5, fontWeight: 500, lineHeight: 15, color: '#FFFFFF',
+          formatter: (p) => p.name + '\n' + num(p.value)
+        },
+        labelLine: { show: false },
+        itemStyle: { borderWidth: 0, borderRadius: 3 },
+        emphasis: { label: { fontSize: 12.5, fontWeight: 700 } },
+        data: DATA.funnel.map((d, i) => ({
+          name: d.name, value: d.value, itemStyle: { color: c.funnel[i] }
+        }))
+      }]
+    };
+  }
+
+  /* ---------- 图 2：营收与同比（柱 + 线，双轴） ---------- */
+  function optTrend(c) {
+    return {
+      /* baseOption + media：ECharts 会按「容器宽度」自动套用 media 里的覆盖项。
+         手机上卡片内宽只有 279px，12 个月份标签挤成一团，必须减量显示。
+         用 media 而不是 JS 判断，是因为窗口缩放 / 横竖屏切换时它会自己重算。 */
+      baseOption: {
+      animationDuration: 900,
+      animationEasing: 'cubicOut',
+      grid: { left: 4, right: 4, top: 52, bottom: 2, containLabel: true },
+      tooltip: Object.assign({ trigger: 'axis', axisPointer: { type: 'shadow' },
+        formatter: (ps) => {
+          let s = '<b>' + ps[0].axisValue + '</b>';
+          ps.forEach((p) => {
+            s += '<br/>' + p.marker + p.seriesName + '：' +
+                 (p.seriesIndex === 0 ? p.value + ' 万元' : p.value + '%');
+          });
+          const i = ps[0].dataIndex;
+          if (i > 0) {
+            const d = (DATA.revenue[i] - DATA.revenue[i - 1]).toFixed(1);
+            s += '<br/><span style="opacity:.65">环比 ' + (d > 0 ? '+' : '') + d + ' 万元</span>';
+          }
+          return s;
+        } }, tipStyle(c)),
+      legend: {
+        show: true, top: 0, right: 0, itemWidth: 11, itemHeight: 8, itemGap: 12,
+        icon: 'roundRect', textStyle: { color: c.label, fontSize: 11 }
+      },
+      xAxis: {
+        type: 'category', data: DATA.months,
+        axisTick: { show: false },
+        axisLine: { lineStyle: { color: c.grid } },
+        axisLabel: { color: c.sub, fontSize: 10, interval: 0, margin: 8 }
+      },
+      yAxis: [
+        { type: 'value',
+          splitLine: { lineStyle: { color: c.grid, type: 'dashed' } },
+          axisLabel: { color: c.sub, fontSize: 10 } },
+        { type: 'value',
+          splitLine: { show: false },
+          axisLabel: { color: c.sub, fontSize: 10, formatter: '{value}%' } }
+      ],
+      series: [
+        { name: '营收', type: 'bar', data: DATA.revenue,
+          barWidth: '48%',
+          itemStyle: {
+            borderRadius: [3, 3, 0, 0],
+            color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+                     colorStops: [ { offset: 0, color: c.barTop },
+                                   { offset: 1, color: c.barBottom } ] }
+          } },
+        { name: '同比', type: 'line', yAxisIndex: 1, data: DATA.yoy,
+          smooth: true, symbol: 'circle', symbolSize: 5, z: 3,
+          lineStyle: { width: 2.4, color: c.line },
+          itemStyle: { color: c.line, borderColor: c.tipBg, borderWidth: 1.5 },
+          /* 把「8 月自动化日报上线」之后那段高亮出来。
+             标注文字挂在 markArea 上、不是 markLine 上 —— 竖线的 label 会顺着
+             线的方向转成竖排，几个字就被容器裁掉了（第一版正是这样）。 */
+          markArea: { silent: true,
+            itemStyle: { color: c.area },
+            /* 文案保持简短：它固定在区域左上角，写长了在手机上会顶出右边界
+               （完整那句「8 月自动化日报上线后…」放在卡片下方的结论里） */
+            label: { show: true, position: 'insideTopLeft',
+                     formatter: '8 月起日报上线',
+                     color: c.label, fontSize: 10, padding: [3, 0, 0, 3] },
+            data: [[{ xAxis: '8月' }, { xAxis: '12月' }]] },
+          /* markLine 的 label 默认是开着的（会显示「8月」），这里必须显式关掉 */
+          markLine: { silent: true, symbol: 'none',
+            label: { show: false },
+            lineStyle: { color: c.line, type: 'dashed', width: 1, opacity: .5 },
+            data: [{ xAxis: '8月' }] }
+        }
+      ]
+      },
+      /* 阈值是按「标签实际占宽」反推的：12 个「N月」约 288px，
+         再扣掉左右两条 y 轴各 30px —— 容器宽于 350px 就放得下，不必减量。
+         （桌面 2 列布局下容器只有 490px，阈值定高一点就会把桌面端也误砍掉。） */
+      media: [
+        { query: { maxWidth: 350 },
+          option: { xAxis: { axisLabel: { interval: 1 } } } },
+        { query: { maxWidth: 240 },
+          option: { xAxis: { axisLabel: { interval: 2 } } } }
+      ]
+    };
+  }
+
+  /* ---------- 图 3：异动归因（横向条形 · 贡献度分解） ----------
+     全部取绝对值、统一向右，是为了让标签对齐同一侧、不重叠；
+     「方向」靠 ↓ / ↑ 前缀和实心/描边来区分，比正负混排更好读。 */
+  function optAttr(c) {
+    const rows = DATA.attr.slice().reverse();   /* ECharts 类目轴自下而上 */
+    return {
+      animationDuration: 900,
+      animationEasing: 'cubicOut',
+      grid: { left: 4, right: 46, top: 10, bottom: 2, containLabel: true },
+      tooltip: Object.assign({ trigger: 'axis', axisPointer: { type: 'shadow' },
+        formatter: (ps) => {
+          const p = ps[0], d = DATA.attr[DATA.attr.length - 1 - p.dataIndex];
+          const share = (d.value / 296 * 100).toFixed(0);
+          return '<b>' + d.name + '</b><br/>' +
+                 (d.dir > 0 ? '回补 ' : '拖累 ') + d.value + ' 人' +
+                 (d.dir > 0 ? '<br/><span style="opacity:.65">部分对冲了下跌</span>'
+                            : '<br/>占全部缺口的 ' + share + '%');
+        } }, tipStyle(c)),
+      xAxis: {
+        type: 'value',
+        axisLine: { show: false }, axisTick: { show: false },
+        splitLine: { lineStyle: { color: c.grid, type: 'dashed' } },
+        axisLabel: { color: c.sub, fontSize: 10, formatter: '{value} 人' }
+      },
+      yAxis: {
+        type: 'category',
+        data: rows.map((d) => (d.dir > 0 ? '↑ ' : '↓ ') + d.name),
+        axisLine: { show: false }, axisTick: { show: false },
+        axisLabel: { color: c.label, fontSize: 11.5 }
+      },
+      series: [{
+        type: 'bar',
+        barWidth: 15,
+        /* 调色板由浅到深，用独立计数器按「拖累程度」递进。
+           别拿 rows 的下标去索引 —— 正向条目也占下标，会串位甚至越界
+           （第一版就是这样，主因那条取到了 undefined，掉回 ECharts 默认色）。 */
+        data: (() => {
+          let dragIdx = -1;
+          return rows.map((d) => {
+            if (d.dir > 0) {
+              return { value: d.value,
+                       itemStyle: { color: c.attrPos, borderColor: c.attrPosLine,
+                                    borderWidth: 1.2, borderRadius: [0, 3, 3, 0] } };
+            }
+            dragIdx += 1;
+            return { value: d.value,
+                     itemStyle: { color: c.attr[dragIdx] || c.attr[c.attr.length - 1],
+                                  borderRadius: [0, 3, 3, 0] } };
+          });
+        })(),
+        label: {
+          show: true, position: 'right', distance: 7,
+          color: c.label, fontSize: 11.5, fontWeight: 600,
+          formatter: (p) => num(p.value) + ' 人'
+        }
+      }]
+    };
+  }
+
+  /* ---------- 实例管理 ---------- */
+  const BUILDERS = { chartFunnel: optFunnel, chartTrend: optTrend, chartAttr: optAttr };
+  const charts = Object.create(null);
+
+  /* 打印时无论系统主题是什么，一律按浅色画（PDF 里不能是深底） */
+  let forceLight = false;
+  const mode = () => (forceLight || !document.documentElement.classList.contains('dark'))
+                      ? 'light' : 'dark';
+
+  /* 幂等：已经有了就重新 setOption（用作主题重绘），没有就初始化。
+     早期版本这里带了个 force 开关，结果正常路径传 false 时直接 return，
+     图表永远画不出来 —— 撤掉，初始化与否交给调用时机决定。 */
+  function paint() {
+    Object.keys(BUILDERS).forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (!charts[id]) charts[id] = echarts.init(el, null, { renderer: 'svg' });
+      charts[id].setOption(BUILDERS[id](T[mode()]), true);
+    });
+  }
+
+  /* 首屏优先：等浏览器空下来再画，别和 Hero 的照片抢主线程。
+     这里刻意没用「滚到才画」的懒加载 —— IntersectionObserver 和 scroll
+     事件都依赖渲染帧，在无头浏览器 / 自动化导出 PDF 时可能压根不派发，
+     图表就会一直空着（这个坑我踩过）。空闲回调 + 定时兜底在任何环境都成立。 */
+  function schedulePaint() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(paint, { timeout: 1600 });
+    } else {
+      setTimeout(paint, 900);
+    }
+  }
+  if (document.readyState === 'complete') schedulePaint();
+  else window.addEventListener('load', schedulePaint);
+
+  /* 主题切换：ECharts 的颜色是写在 SVG 属性上的，CSS 变量管不着，只能重绘 */
+  new MutationObserver(() => {
+    if (Object.keys(charts).length) paint();
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+  /* 打印兜底：主题一律换回浅色，并确保三张图都已画出来 */
+  function toPrint() {
+    forceLight = true;
+    paint();
+    Object.keys(charts).forEach((k) => charts[k].resize());
+  }
+  function fromPrint() {
+    forceLight = false;
+    paint();
+  }
+  window.addEventListener('beforeprint', toPrint);
+  window.addEventListener('afterprint', fromPrint);
+  /* 兜底之二：无头浏览器导出 PDF 时 beforeprint 不一定触发 */
+  const mqPrint = window.matchMedia && window.matchMedia('print');
+  if (mqPrint && mqPrint.addEventListener) {
+    mqPrint.addEventListener('change', (e) => (e.matches ? toPrint() : fromPrint()));
+  }
+
+  /* 尺寸变化：ECharts 不会自己跟着容器走 */
+  let rt = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(rt);
+    rt = setTimeout(() => {
+      Object.keys(charts).forEach((k) => charts[k].resize());
+    }, 160);
+  });
+})();
+</script>
+
+</body>
+</html>

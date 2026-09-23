@@ -1,0 +1,260 @@
+{
+  "meta": {
+    "sourceFile": "简历.pptx",
+    "sourcePath": "D:\\HuaweiMoveData\\Users\\25785\\Desktop\\简历\\简历.pptx",
+    "extractedAt": "2026-09-22",
+    "slideCount": 2,
+    "pageSize": "595pt × 842pt（A4 竖版）",
+    "assetDir": "resume-assets/",
+    "note": "全部文字均从 PPT 原文提取；标注 inferred 的字段为根据原文推断补齐，标注 missing 的字段 PPT 中未提供。"
+  },
+
+  "profile": {
+    "name": "宋一鸣",
+    "gender": "男",
+    "title": "数据分析 / 数据运营",
+    "title_status": "inferred",
+    "slogan": "用数据讲清业务，让每个决策都有依据。",
+    "slogan_status": "drafted_by_ai",
+    "summary": "从指标体系搭建、异动归因到看板落地，把散落的数据变成可以执行的结论。",
+    "summary_status": "drafted_by_ai",
+    "photo": {
+      "enabled": true,
+      "source": "resume-assets/image1.jpg",
+      "position": "第 1 页右上角",
+      "size": "64pt × 88pt（约 8:11，接近 3:4 证件照比例）",
+      "placeholderHint": "建议前端使用 3:4 比例占位区，圆角 8px，未上传照片时显示姓名首字或人像图标"
+    },
+    "contact": {
+      "email": "18372331313@163.com",
+      "phone": "18372331313",
+      "wechat": "_keykeykiyomi_",
+      "wechat_status": "confirmed",
+      "base": "武汉",
+      "base_status": "confirmed"
+    }
+  },
+
+  "skills": [
+    {
+      "category": "数据分析",
+      "kind": "能力 / 方法",
+      "items": [
+        "指标体系",
+        "量化测算",
+        "归因分析",
+        "异动分析",
+        "业务诊断",
+        "用户行为分析",
+        "杜邦分析",
+        "PEST 分析",
+        "SWOT 分析",
+        "计量经济学"
+      ],
+      "detail": "覆盖从指标体系搭建、业务拆解到异动定位与归因复盘的完整分析链路，并具备杜邦 / PEST / SWOT 等商业分析框架与计量经济学基础。"
+    },
+    {
+      "category": "数据工具",
+      "kind": "工具",
+      "items": [
+        "Excel",
+        "Tableau",
+        "MySQL",
+        "Python",
+        "Tableau Prep Builder",
+        "影刀 RPA",
+        "SPSS"
+      ],
+      "detail": "Excel / Python 做数据清洗与加工，MySQL 做数据存储与 SQL 查询，Tableau 与 Prep Builder 做看板搭建与数据准备，影刀 RPA 做自动化采集，SPSS 做统计分析。"
+    },
+    {
+      "category": "办公技能",
+      "kind": "工具",
+      "items": [
+        "PPT",
+        "幕布",
+        "石墨文档",
+        "秀米",
+        "飞书"
+      ],
+      "detail": "具备方案汇报、结构化写作与团队协作工具的使用能力。"
+    }
+  ],
+
+  "work_experience": [
+    {
+      "company": "武汉大学附属爱尔眼科医院",
+      "position": "数据运营",
+      "period": "2026年6月 - 2026年9月",
+      "type": "实习",
+      "highlights": [
+        "经营监控：基于美团搭建七家门诊自动化日报周报，采集浏览转化购买咨询等核心指标，监控异常值定位归因，输出经营优化建议",
+        "GEO优化：发布文章优化武汉大学附属爱尔眼科医院在 AI 搜索中的曝光占比与排名，跟踪排序变化，量化评估内容优化策略效果",
+        "投放监测：监控聚光广告投放全链路数据，跟踪平台引流及线索获客指标，评估投放渠道获客质量，为投放策略调整提供数据支撑",
+        "内容洞察：汇总达人探店、素人种草笔记曝光互动引流数据，拆解不同内容形式引流效率，提炼线上宣传优化方向，赋能到院转化",
+        "竞品对标：持续收集区域同类型眼科机构线上套餐、投放与口碑数据，横向对比流量转化差异，输出竞品分析与差异化的运营建议",
+        "直播复盘：跟踪小程序直播的观看、互动、留资转化数据，统计抽奖活动参与度，复盘直播转化链路，迭代直播内容与活动策略"
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "门店运营数据可视化分析平台（WorkBuddy）",
+      "period": "2026年08月 - 2026年08月",
+      "description": "面向门店经营的多源数据清洗与可视化监控平台，支持管理层总览与明细下钻，替换 Excel 源文件即可整图刷新。",
+      "tools": ["Excel", "Python", "Streamlit", "HTML", "GitHub"],
+      "methods": ["数据清洗与口径统一", "看板搭建", "总值核验与双算法交叉验证", "Prompt 工程", "Git 分支管理"],
+      "highlights": [
+        "数据清洗：使用Excel、Python脚本清洗门店多源业务数据，去重、处理异常值、统一数据格式等统一分析口径并提取核心指标",
+        "看板搭建：基于Streamlit与HTML搭建管理层总览视图及详细情况，直观展示门店各项营收缺口、同环比数据及异常高亮告警逻辑",
+        "数据核验：针对AI生成代码易产生逻辑偏差，构建总值核验、随机抽样与双算法交叉验证机制，规避AI幻觉，保障数据决策精确性",
+        "监控转型：利用Prompt引导AI，严格复用原有业务分析口径；通过同路径替换Excel文件即全图刷新的机制，打造动态监控看板",
+        "工程管理：利用Github建立主干与功能分支，实现新功能的安全测试与任意版本的一键回溯，输出配套操作说明及Demo局限备注"
+      ],
+      "results": [
+        "建立总值核验 + 随机抽样 + 双算法交叉验证机制，规避 AI 幻觉带来的口径偏差",
+        "通过同路径替换 Excel 文件即全图刷新的机制，把静态报表升级为动态监控看板",
+        "用 GitHub 主干 / 功能分支实现新功能安全测试与任意版本一键回溯，并输出配套操作说明"
+      ]
+    },
+    {
+      "name": "B站up主数据监控看板",
+      "period": "2026年06月 - 2026年07月",
+      "description": "从数据采集、加工到看板呈现的全链路账号监控方案，覆盖粉丝画像与播放、点赞、投币等核心视频指标，并形成定期复盘机制。",
+      "tools": ["影刀 RPA", "Excel", "MySQL", "Tableau"],
+      "methods": ["RPA 自动化采集", "定时任务与报表推送", "SQL 多表关联与字段加工", "指标拆解与衍生指标", "异常归因复盘"],
+      "highlights": [
+        "数据采集：基于影刀RPA设计自动化爬虫流程，实现对目标UP主粉丝画像及视频核心指标（播放、点赞、投币）的全量自动化获取",
+        "数据处理：利用RPA内置功能对原始数据进行去重、格式化与校验，按预设模板写入Excel；配置每日定时触发机制，实现报表推送",
+        "数据加工：将Excel表格数据批量导入MySQL数据库，通过编写SQL语句完成数据清洗、字段加工、多表关联查询及数据整合处理",
+        "看板搭建：基于Tableau搭建UP主数据监控看板，通过指标拆解与逻辑运算构建衍生指标，实现账号运营数据的监控与趋势洞察",
+        "复盘优化：定期追踪核心指标波动情况，对异常数据进行定位与归因分析，形成数据复盘报告，助力账号涨粉效率提升 15% 以上"
+      ],
+      "results": [
+        "助力账号涨粉效率提升 15% 以上",
+        "实现核心指标全量自动化采集与每日定时报表推送，形成可持续的账号运营监控与趋势洞察"
+      ]
+    },
+    {
+      "name": "互联网金融业务诊断分析",
+      "period": "2026年04月 - 2026年05月",
+      "description": "围绕互联网金融机构贷款业务展开的业务诊断，从业务流程拆解到指标体系搭建，并通过异动与归因分析定位业务问题。",
+      "tools": [],
+      "methods": ["业务流程拆解", "指标体系从 0-1 搭建", "异动分析", "归因分析"],
+      "highlights": [
+        "业务拆解：全面拆解贷款过程，包括线上业务、线下业务，详细分析用户侧业务动作，输出获客来源及互联网金融公司的商业模式",
+        "指标体系：基于互联网金融公司的业务过程快速提炼核心指标，构建业务公式，从0-1搭建完整的指标体系，提出准确的数据需求",
+        "异动分析：查看异常数据，准确地定位期望和事实之间的差距，用数据量化差距，结合数据建设并找到补足差距有效且精准的方法",
+        "归因分析：确保数据无误，将问题转化为具体数据指标上的差距，排除周期性外部波动的影响，定位得出线下成交人数下跌的原因"
+      ],
+      "results": [
+        "从 0-1 搭建互联网金融业务指标体系并沉淀业务公式，输出准确的数据需求",
+        "排除周期性外部波动影响，定位出线下成交人数下跌的原因"
+      ]
+    },
+    {
+      "name": "兴趣电商开品报告（冰红茶）基于巨量云图",
+      "period": "2026年02月 - 2026年03月",
+      "description": "基于巨量云图数据的茶饮料行业开品研究，从行业、流量、爆款、视觉四个维度推导新品假设并完成概念设计。",
+      "tools": ["巨量云图"],
+      "methods": ["行业分析", "关键词流量分析", "爆款产品拆解", "短视频视觉创意研究", "ICE 模型评估"],
+      "highlights": [
+        "行业分析：收集茶饮料行业相关信息，总结茶饮料行业发展历程、市场规模、发展趋势、产品特点，提出关键洞察，作出研究总结",
+        "流量分析：通过对各关键词类型下的关键词分析，收集GMV排名前列的关键词信息，分析关键词出现原因，总结茶饮料热卖卖点",
+        "爆款分析：通过研究GMV排名靠前的茶饮料销售数据、详情页、购后评价等，总结爆款产品必须击中的用户痛点、Aha时刻、爆点",
+        "视觉研究：分别从曝光率、互动率、收藏率入手研究各维度排名前列的短视频的视觉创意，分析视觉创意对提升成交转换率的作用",
+        "开品假设：设计 3 款差异化新品概念，经 ICE 模型评估确定电解质冰红茶为核心产品假设，不久康师傅冰红茶Energy在抖音上线"
+      ],
+      "results": [
+        "设计 3 款差异化新品概念，经 ICE 模型评估确定电解质冰红茶为核心产品假设",
+        "随后康师傅冰红茶 Energy 在抖音上线，验证开品方向"
+      ]
+    }
+  ],
+
+  "works": [
+    {
+      "title": "兴趣电商开品报告（冰红茶）",
+      "description": "基于巨量云图的茶饮料行业开品研究，覆盖行业分析、关键词流量、爆款拆解与短视频视觉研究，最终输出 3 款新品概念。",
+      "tags": ["巨量云图", "行业分析", "开品研究", "电商"],
+      "url": "https://k01ukh5jq36.feishu.cn/wiki/SlZNwT8bWi7FXekyHf1cn2OenER",
+      "url_source": "decoded_from_qr",
+      "images": ["resume-assets/image3.png", "resume-assets/image2.png"]
+    },
+    {
+      "title": "B站up主数据监控看板 & 互联网金融-数据分析周报 & SQL代码",
+      "description": "影刀 RPA 自动采集 + MySQL 加工 + Tableau 呈现的账号监控看板，配套互联网金融数据分析周报与 SQL 代码集。",
+      "tags": ["影刀RPA", "MySQL", "SQL", "Tableau"],
+      "url": "https://k01ukh5jq36.feishu.cn/wiki/TUQ6w2LZJitE2rkaZ8dc4UMmnXl",
+      "url_source": "decoded_from_qr",
+      "images": [
+        "resume-assets/image8.png",
+        "resume-assets/image9.png",
+        "resume-assets/image10.png",
+        "resume-assets/image11.png"
+      ]
+    },
+    {
+      "title": "日常数分业务监控看板-Tableau",
+      "description": "面向日常业务监控的 Tableau 看板集合，用于核心指标追踪与异常洞察。",
+      "tags": ["Tableau", "数据看板", "业务监控"],
+      "url": "https://k01ukh5jq36.feishu.cn/wiki/XdM1wPFMEiPoEQk07Ppc0nyxnYc",
+      "url_source": "decoded_from_qr",
+      "images": [
+        "resume-assets/image7.png",
+        "resume-assets/image4.png",
+        "resume-assets/image5.png",
+        "resume-assets/image6.png"
+      ]
+    },
+    {
+      "title": "门店运营数据可视化分析平台",
+      "description": "基于 Streamlit + HTML 搭建的门店营收监控平台，含总览视图、明细下钻与异常高亮告警，支持 Excel 源文件替换后整图刷新。",
+      "tags": ["Python", "Streamlit", "HTML", "Excel"],
+      "url": "https://ikunmiracle-ops.github.io/data-dashboard/",
+      "url_source": "decoded_from_qr",
+      "images": ["resume-assets/image12.png", "resume-assets/image13.png"]
+    }
+  ],
+
+  "education": [
+    {
+      "school": "武汉科技大学",
+      "major": "金融科技",
+      "degree": "本科",
+      "degree_status": "inferred",
+      "period": "2024年09月 - 2028年06月",
+      "courses": [
+        "概率论与数理统计",
+        "机器学习",
+        "python语言程序设计基础",
+        "数据处理与金融数据分析",
+        "微观/宏观经济学",
+        "计量经济学",
+        "金融工程学"
+      ]
+    }
+  ],
+
+  "_notes": {
+    "missing_fields": [],
+    "ai_drafted_fields": {
+      "profile.slogan": "PPT 未提供，由 AI 代写（用户确认保留）",
+      "profile.summary": "PPT 未提供，由 AI 代写（用户确认保留）"
+    },
+    "inferred_fields": {
+      "profile.title": "PPT 未写求职意向，根据「数据运营」实习 + 数据分析类技能与项目推断为「数据分析 / 数据运营」",
+      "education[0].degree": "依据 2024.09-2028.06 学制推断为本科在读"
+    },
+    "derived_fields": [
+      "projects[].description / results 与 skills[].detail 为基于 PPT 原文的精简归纳，非逐字原文",
+      "works[].description 为结合对应项目经历归纳，PPT 作品页仅有标题与截图"
+    ],
+    "layout_hints": {
+      "page1": "顶部个人信息（姓名/性别/电话/邮箱 + 右上角证件照）→ 专业技能 → 实习经历 → 教育经历 → 项目经历",
+      "page2": "个人作品（左列作品标题，右列截图）",
+      "accent": "全文使用微软雅黑，正文 9pt / 小标题 11pt，区块间用细横线分隔"
+    }
+  }
+}
